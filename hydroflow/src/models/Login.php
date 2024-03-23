@@ -27,8 +27,8 @@ class Login extends Model {
                 return $user;
             }
         }
-        $hash = password_hash($this->senha, PASSWORD_DEFAULT);
-        echo $hash;
+        //$hash = password_hash($this->senha, PASSWORD_DEFAULT);
+        //echo $hash;
         throw new AppException("Usuário e Senha inválidos.");
         
     }

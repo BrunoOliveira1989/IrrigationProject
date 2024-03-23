@@ -22,7 +22,7 @@
             <i class="icon ph-bold ph-chart-line"></i><span>Gráficos</span>
         </div>
         <div class="nav-button">
-            <i class="icon ph-bold ph-faders"></i><span>Painel de Controle</span>
+            <i class="icon ph-bold ph-faders"></i><a href = dashboard.php><span>Painel de Controle</span></a>
         </div>
         <div class="nav-button">
             <i class="icon ph-bold ph-flag"></i><span>Zona</span>
@@ -31,7 +31,7 @@
             <i class="icon ph-bold ph-potted-plant"></i><span>Jardim</span>
         </div>
         <div class="nav-button">
-          <i class="icon ph-bold ph-circuitry"></i><span>Dispositivos</span>
+          <i class="icon ph-bold ph-circuitry"><a href = device_register.php></i><span>Dispositivos</span></a>
         </div>
         <div class="nav-content-highlight"></div>
       </div>
