@@ -1,0 +1,216 @@
+:root {
+  --progress-color: #3ca6a6;
+  --progress-thermometer-color: #F25C05;
+}
+
+*,
+*::after,
+*::before {
+  transition: 0.5s ease all;
+}
+
+.content.control {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content .control-switches .control-switch {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .control-switches .control-switch .control-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.content .control-switches .control-switch .control-label .icon {
+    font-size: 25px;
+}
+
+.content .control-switches .control-switch .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin: 10px;
+}
+
+.content .control-switches .control-switch .switch .switch-input {
+    display: none;
+}
+
+.content .control-switches .control-switch .switch .switch-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    border-radius: 34px;
+    background-color: #D90D1E;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.content .control-switches .control-switch .switch .switch-label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.content .control-switches .control-switch .switch .switch-input:checked + .switch-label {
+    background-color: #4CAF50;
+}
+
+.content .control-switches .control-switch .switch .switch-input:checked + .switch-label::before {
+    transform: translateX(16px);
+}
+
+.content .control-column-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.content .control-column-1 .error-display {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #4CAF50;
+    background-color: #212121;
+}
+
+.content .control-column-1 .error-display .error-label {
+    width: 90%;
+    padding: 5px 0;
+    border-bottom: 1px solid #343434;
+}
+
+.content .control-column-1 .error-display .error-status {
+    padding: 10px;
+}
+
+.content .progress {
+  --progress-value: 0;
+  --progress-indicator-size: 350px;
+  --progress-size: 190px;
+  --progress-inner-size: calc(var(--progress-size) - 20px);
+  border: 5px solid var(--progress-color);
+}
+
+.content .progress.thermometer {
+    border-color: var(--progress-thermometer-color);
+}
+
+.content .progress::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  min-width: 8px;
+  min-height: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.content .progress,
+.progress-inner {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: var(--progress-size);
+  height: var(--progress-size);
+  border-radius: var(--progress-size);
+  background-color: transparent;
+}
+
+.content .progress .progress-inner {
+  width: var(--progress-inner-size);
+  height: var(--progress-inner-size);
+  border: none;
+  margin: auto;
+  overflow: hidden;
+}
+
+.content .progress .progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.content .progress .progress-label p {
+  font-size: 200%;
+}
+
+.content .progress .progress-label strong {
+  font-size: 200%;
+}
+
+.content .progress .progress-label span {
+  font-size: 120%;
+}
+
+.content .progress .progress-inner .progress-indicator {
+  background: var(--progress-color);
+  transform-origin: center center;
+  -webkit-animation: progress-wave-animation 8s linear infinite both;
+  animation: progress-wave-animation 8s linear infinite both;
+  position: absolute;
+  top: calc(100% - var(--progress-value) * 1%);
+  left: -50%;
+  right: 50%;
+  width: var(--progress-indicator-size);
+  height: var(--progress-indicator-size);
+  border-radius: calc(var(--progress-indicator-size) / 2.3);
+}
+
+.content .progress.thermometer .progress-inner .progress-indicator {
+    background: var(--progress-thermometer-color);
+    -webkit-animation: none;
+    animation: none;
+    top: calc(100% - var(--progress-value) * 2%);
+    border-radius: 50%;
+}
+
+@-webkit-keyframes progress-wave-animation {
+  to,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress-wave-animation {
+  to,
+  100% {
+    transform: rotate(360deg);
+  }
+}

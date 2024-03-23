@@ -13,12 +13,12 @@
             <h2>Entrar</h2>
             <form action="#" method="post" class="form">
                 <div class="form-group">
-                    <input class="form-input" type="text" name="user" id="user" placeholder="Usuário">
-                    <label class="form-label" for="user">Usuário</label>
+                    <input class="form-input" type="text" name="usuario" id="usuario" placeholder="Usuário">
+                    <label class="form-label" for="usuario" value="<?= !empty($email) ? $email : '' ?>" autofocus>Usuário</label>
                 </div>
                 <div class="form-group">
-                    <input class="form-input" type="password" name="password" id="password" placeholder="Senha">
-                    <label class="form-label" for="password">Senha</label>
+                    <input class="form-input" type="password" name="senha" id="senha" placeholder="Senha">
+                    <label class="form-label" for="senha">Senha</label>
                 </div>
                 <button class="btn-submit">Entrar</button>
             </form>

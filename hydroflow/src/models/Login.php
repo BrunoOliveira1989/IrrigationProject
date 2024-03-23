@@ -7,12 +7,12 @@ class Login extends Model {
     public function validate() {
         $errors = [];
 
-        if(!$this->user) {
-            $erros['user'] = "Por favor, informe o usuário.";
+        if(!$this->usuario) {
+            $erros['usuario'] = "Por favor, informe o usuário.";
         }
 
-        if(!$this->passwrod) {
-            $erros['password'] = "Por favor, informe a senha.";
+        if(!$this->senha) {
+            $erros['senha'] = "Por favor, informe a senha.";
         }
 
         if(count($errors) > 0) {
@@ -21,9 +21,9 @@ class Login extends Model {
     }
     public function checkLogin() {
         $this->validate();
-        $user = User::getOne(['user' => $this->user]);
+        $user = User::getOne(['usuario' => $this->usuario]);
         if($user) {
-            if(password_verify($this->password, $user->password)) {
+            if(password_verify($this->senha, $user->senha)) {
                 return $user;
             }
         }
