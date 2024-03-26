@@ -31,7 +31,7 @@
             <i class="icon ph-bold ph-potted-plant"></i><span>Jardim</span>
         </div>
         <div class="nav-button">
-          <i class="icon ph-bold ph-circuitry"></i><a href="registros_dispositivos.php">Dispositivos</a>
+          <i class="icon ph-bold ph-circuitry"></i><a href="registros_dispositivo.php">Dispositivos</a>
         </div>
         <div class="nav-content-highlight"></div>
       </div>
