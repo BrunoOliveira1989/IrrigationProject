@@ -55,13 +55,14 @@
                     <textarea class="input textarea" name="descricao" id="descricao" cols="30" rows="10"></textarea>
                 </div>
             </div>
-            <!-- <div class="hr"></div> -->
         </form>
-        <!-- <span class="btn-plus" id="btn-plus"><i class="icon ph-bold ph-plus-circle"></i>Adicionar um Dispositivo</span> -->
         <div class="btn-box">
-            <button class="btn-register">
+            <button type="submit" form="register" class="btn-register">
                 <i class="ph-bold ph-check-fat"></i>Cadastrar
             </button>
+            <a href="registros_dispositivo.php" class="btn-register cancel">
+                <i class="ph-bold ph-x"></i>Cancelar
+            </a>
         </div>
     </div>
 </main>

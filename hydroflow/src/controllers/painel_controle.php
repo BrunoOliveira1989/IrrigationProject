@@ -2,4 +2,4 @@
 session_start();
 requireValidSession();
 
-loadTemplateView("cadastro_dispositivo");
+loadTemplateView("painel_controle");
