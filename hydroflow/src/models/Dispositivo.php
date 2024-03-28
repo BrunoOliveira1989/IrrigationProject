@@ -1,7 +1,7 @@
 <?php
 
 class Dispositivo extends Model {
-    protected static $tableName = "dispositivos";
+    protected static $tableName = "Dispositivos";
     protected static $columns = [
         'id',
         'nome_dispostivo',
