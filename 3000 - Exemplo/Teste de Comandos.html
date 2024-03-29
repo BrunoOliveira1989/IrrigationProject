@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Comandos</title>
+</head>
+<body>
+    <h1>Teste de Comandos</h1>
+    <form id="formulario">
+        <label for="idJardim">ID do Jardim:</label><br>
+        <input type="text" id="idJardim" name="idJardim"><br>
+        <label for="idArea">ID da Área:</label><br>
+        <input type="text" id="idArea" name="idArea"><br><br>
+        <label>Comandos:</label><br>
+        <input type="checkbox" id="cmdAutomatico" name="cmdAutomatico" value="cmd_automatico" onchange="enviarComando(this)"> Comando Automático<br>
+        <input type="checkbox" id="cmdValvula" name="cmdValvula" value="cmd_valvula" onchange="enviarComando(this)"> Comando Válvula<br>
+        <input type="checkbox" id="cmdMotor" name="cmdMotor" value="cmd_motor" onchange="enviarComando(this)"> Comando Motor<br>
+        <input type="checkbox" id="cmdControleTemperatura" name="cmdControleTemperatura" value="cmd_controle_temperatura" onchange="enviarComando(this)"> Comando Controle de Temperatura<br>
+        <input type="checkbox" id="cmdControleUmidade" name="cmdControleUmidade" value="cmd_controle_umidade" onchange="enviarComando(this)"> Comando Controle de Umidade<br>
+        <input type="checkbox" id="cmdControleVolume" name="cmdControleVolume" value="cmd_controle_volume" onchange="enviarComando(this)"> Comando Controle de Volume<br>
+    </form>
+
+    <script>
+        function enviarComando(checkbox) {
+            var idJardim = document.getElementById("idJardim").value;
+            var idArea = document.getElementById("idArea").value;
+            var comandoName = checkbox.value;
+            var comando = checkbox.checked ? 1 : 0;
+
+            // Descrição do comando
+            var descricao = checkbox.nextSibling.textContent.trim();
+
+            var url = "http://18.230.24.126:1880/irrigacao/comando/" + idJardim + "/" + idArea + "/" + comandoName;
+            var data = { descricao: descricao, id_jardim: idJardim, id_area: idArea, comando: comando };
+
+            fetch(url, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao enviar o comando: " + comandoName);
+                }
+                console.log("Comando " + comandoName + " enviado com sucesso");
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        }
+    </script>
+</body>
+</html>
