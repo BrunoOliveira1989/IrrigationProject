@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Parâmetros de Irrigação</title>
+</head>
+<body>
+    <h1>Teste: Parâmetros</h1>
+    <form id="formulario">
+        <!-- Campos do formulário -->
+        <label for="idJardim">ID do Jardim:</label><br>
+        <input type="text" id="idJardim" name="idJardim"><br>
+        <label for="idArea">ID da Área:</label><br>
+        <input type="text" id="idArea" name="idArea"><br><br>
+
+        <!-- Outros campos do formulário -->
+        <label for="horarioInicio">Horário de Início:</label><br>
+        <input type="time" id="horarioInicio" name="horarioInicio"><br>
+        <label for="duracao">Duração:</label><br>
+        <input type="time" id="duracao" name="duracao"><br>
+        <label for="diasSemana">Dias da Semana:</label><br>
+        <input type="text" id="diasSemana" name="diasSemana"><br>
+        <label for="setpointUmidade">Setpoint de Umidade:</label><br>
+        <input type="number" id="setpointUmidade" name="setpointUmidade"><br>
+        <label for="limiteSuperiorUmidade">Limite Superior de Umidade:</label><br>
+        <input type="number" id="limiteSuperiorUmidade" name="limiteSuperiorUmidade"><br>
+        <label for="limiteInferiorUmidade">Limite Inferior de Umidade:</label><br>
+        <input type="number" id="limiteInferiorUmidade" name="limiteInferiorUmidade"><br>
+        <label for="limiteSuperiorTemperatura">Limite Superior de Temperatura:</label><br>
+        <input type="number" id="limiteSuperiorTemperatura" name="limiteSuperiorTemperatura"><br>
+        <label for="limiteInferiorTemperatura">Limite Inferior de Temperatura:</label><br>
+        <input type="number" id="limiteInferiorTemperatura" name="limiteInferiorTemperatura"><br>
+        <label for="idTipoPlanta">ID do Tipo de Planta:</label><br>
+        <input type="text" id="idTipoPlanta" name="idTipoPlanta"><br>
+        <label for="idTipoIrrigacao">ID do Tipo de Irrigação:</label><br>
+        <input type="text" id="idTipoIrrigacao" name="idTipoIrrigacao"><br><br>
+        <!-- Botão de Envio -->
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o comportamento padrão de enviar o formulário
+
+            // Obter valores dos campos do formulário
+            var formData = new FormData(this);
+
+            // Construir a URL com base nos valores dos campos
+            var idJardim = formData.get('idJardim');
+            var idArea = formData.get('idArea');
+            var url = "http://54.232.159.9:1880/irrigacao/parametro/" + idJardim + "/" + idArea;
+
+            // Adicionando a descrição ao primeiro item do JSON
+            var jsonData = Object.fromEntries(formData);
+            jsonData = { descricao: "Parâmetros de Irrigação", ...jsonData };
+
+            // Enviar os dados do formulário via fetch com método PUT
+            fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao enviar os dados do formulário.");
+                }
+                console.log("Dados do formulário enviados com sucesso.");
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+        });
+    </script>
+</body>
+</html>

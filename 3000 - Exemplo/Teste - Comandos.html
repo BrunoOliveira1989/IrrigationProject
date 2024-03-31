@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Comandos</title>
+    <title>Teste: Comandos</title>
 </head>
 <body>
     <h1>Teste de Comandos</h1>
@@ -31,7 +31,7 @@
             // Descrição do comando
             var descricao = checkbox.nextSibling.textContent.trim();
 
-            var url = "http://18.230.24.126:1880/irrigacao/comando/" + idJardim + "/" + idArea + "/" + comandoName;
+            var url = "http://54.232.159.9:1880/irrigacao/comando/" + idJardim + "/" + idArea + "/" + comandoName;
             var data = { descricao: descricao, id_jardim: idJardim, id_area: idArea, comando: comando };
 
             fetch(url, {
