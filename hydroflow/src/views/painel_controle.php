@@ -1,11 +1,11 @@
 <main class="main">
-    <div class="title">
-        <i class="icon ph-bold ph-circuitry"></i>
-        <div class="text">
-            <h1>Painel de Controle</h1>
-            <h2>Gerencie ou adicione novos dispositivos de irrigação</h2>
-        </div>
-    </div>
+    <?php
+        renderTitle(
+            "Painel de Controle",
+            "Gerencie",
+            "faders"
+        );
+    ?>
     <div class="content control">
         <div class="control-column">
             <div class="control-switches">
@@ -53,9 +53,13 @@
                 </div>
             </div>
             <div class="error-display">
-                <span class="error-label">Status do sistema</span>
-                <div class="error-status">
-                    <span>Sistema funcionando corretamente</span>
+                <span class="error-label">Sistema</span>
+                <div class="error-box">
+                    <i class="icon ph-bold ph-monitor"></i>
+                    <div class="error-status">
+                        <span>status: Funcional</span>
+                        <span>Erro: nenhum</span>
+                    </div>
                 </div>
             </div>
         </div>

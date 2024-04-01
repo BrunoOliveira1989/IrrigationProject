@@ -43,6 +43,18 @@ class Model {
         return $objects;
     }
 
+    public static function getFromOtherTable($tableName, $filters = [], $columns = '*') {
+        $objects = [];
+        $result = static::getResultSetFromSelectOtherTable($tableName, $filters, $columns);
+        if($result) {
+            $class = get_called_class();
+            while ($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+        return $objects;
+    }
+    
     public static function getResultSetFromSelect($filters = [], $columns = '*') {
         $sql = "SELECT {$columns} FROM " . static::$tableName . static::getFilters($filters);
         $result = Database::getResultFromQuery($sql);
@@ -52,6 +64,27 @@ class Model {
             return $result;
         }
     }
+    
+    public static function getResultSetFromSelectOtherTable($tableName, $filters = [], $columns = '*') {
+        $sql = "SELECT {$columns} FROM {$tableName} " . static::getFilters($filters);
+        $result = Database::getResultFromQuery($sql);
+        if($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
+    }
+        
+    public static function consultaComInner($tableName, $filters = [], $columns = '*', $inner, $orderBy) {
+        $sql = "SELECT {$columns} FROM {$tableName} " . $inner . static::getFilters($filters) . " ORDER BY {$orderBy}";
+        $result = Database::getResultFromQuery($sql);
+        if($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
+    }
+
 
     public function insert() {
         $sql = "INSERT INTO " . static::$tableName . " (" . implode(",", static::$columns) . ") VALUES (";
@@ -78,7 +111,11 @@ class Model {
         if(count($filters) > 0) {
             $sql .= " WHERE 1 = 1";
             foreach($filters as $column => $value) {
-                $sql .= " AND {$column} = " . static::getFormatedValue($value);
+                if($column == 'raw') {
+                    $sql .= " AND {$value}";
+                } else {
+                    $sql .= " AND {$column} = " . static::getFormatedValue($value);
+                }
             }
         }
         return $sql;

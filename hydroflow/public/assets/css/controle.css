@@ -1,6 +1,5 @@
 :root {
-  --progress-color: #3ca6a6;
-  --progress-thermometer-color: #f25c05;
+  
 }
 
 .content.control {
@@ -22,7 +21,7 @@
   gap: 10px;
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: var(--branco);
 }
 
 .content .control-switches .control-switch .control-label .icon {
@@ -48,7 +47,8 @@
   width: 40px;
   height: 24px;
   border-radius: 34px;
-  background-color: #d90d1e;
+  /* background-color: #d90d1e; */
+  background-color: var(--vermelho);
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -61,7 +61,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--branco);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -71,7 +71,7 @@
   .switch
   .switch-input:checked
   + .switch-label {
-  background-color: #4caf50;
+  background-color: var(--verde-claro);
 }
 
 .content
@@ -96,21 +96,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 16px;
-  color: #fff;
+  border-radius: 10px;
+  border: 2px solid var(--preto);
+  font-weight: 600;
   text-align: center;
-  border: 2px solid #4caf50;
-  background-color: #212121;
+  color: var(--preto);
+  text-align: center;
+  background-color: var(--verde-claro);
+  overflow: hidden;
 }
 
 .content .control-column .error-display .error-label {
   width: 90%;
   padding: 5px 0;
-  border-bottom: 1px solid #343434;
+  border-bottom: 2px solid var(--verde-escuro);
 }
 
-.content .control-column .error-display .error-status {
-  padding: 10px;
+.content .control-column .error-display .error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.content .control-column .error-display .error-box .icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.content .control-column .error-display .error-box .error-status {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  padding: 10px 0;
 }
 
 .content .progress {
@@ -118,11 +140,11 @@
   --progress-indicator-size: 270px;
   --progress-size: 150px;
   --progress-inner-size: calc(var(--progress-size) - 20px);
-  border: 5px solid var(--progress-color);
+  border: 5px solid var(--azul-claro);
 }
 
 .content .progress.thermometer {
-  border-color: var(--progress-thermometer-color);
+  border-color: var(--laranja);
 }
 
 .content .progress::before {
@@ -168,7 +190,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: inline-block;
-  color: #fff;
+  color: var(--branco);
   text-align: center;
   overflow: hidden;
 }
@@ -186,7 +208,7 @@
 }
 
 .content .progress .progress-inner .progress-indicator {
-  background: var(--progress-color);
+  background: var(--azul-claro);
   transform-origin: center center;
   -webkit-animation: progress-wave-animation 8s linear infinite both;
   animation: progress-wave-animation 8s linear infinite both;
@@ -201,7 +223,7 @@
 }
 
 .content .progress.thermometer .progress-inner .progress-indicator {
-  background: var(--progress-thermometer-color);
+  background: var(--laranja);
   -webkit-animation: none;
   animation: none;
   top: calc(100% - var(--progress-value) * 2%);
@@ -271,7 +293,7 @@
   width: 100%;
   height: 100px;
   border-radius: 10px;
-  border: 3px solid #212121;
+  border: 3px solid var(--preto);
   overflow: hidden;
 }
 
@@ -282,7 +304,7 @@
   width: 30px;
   height: 120px;
   border-radius: 5px;
-  border: 3px solid #212121;
+  border: 3px solid var(--azul-escuro);
   overflow: hidden;
   z-index: 2;
 }
@@ -300,7 +322,7 @@
   width: 100%;
   height: 100%;
   /* background: linear-gradient(to bottom, #4F9CC0 35%, #214c60); */
-  background: var(--progress-color);
+  background: var(--azul-claro);
 }
 
 .vazao-container .detalhe::after {
@@ -323,7 +345,7 @@
   width: 100%;
   height: 100%;
   /* background: linear-gradient(to bottom, #4F9CC0 35%, #214c60); */
-  background: var(--progress-color);
+  background: var(--azul-claro);
 }
 
 .corpo .fill::before {
@@ -345,7 +367,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: inline-block;
-  color: #fff;
+  color: var(--branco);
   text-align: center;
   overflow: hidden;
 }

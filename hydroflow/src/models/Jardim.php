@@ -1,20 +1,24 @@
 <?php
 
 class Dispositivo extends Model {
-    protected static $tableName = "dispositivos";
+    protected static $tableName = "jardins";
     protected static $columns = [
         'id',
-        'nome_dispositivo',
-        'modelo_dispositivo',
-        'descricao',
-        'pino_arduino',
-        'id_tipo_dispositivo',
-        'id_zona'
+        'nome_jardim',
+        'cep',
+        'logradouro',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado',
+        'tamanho',
+        'descricao_jardim',
+        'id_funcionario'
     ];
 
     public function inserir() {
         $this->validar();
-        if(!$this->descricao) $this->descricao = null;
+        if(!$this->descricao_jardim) $this->descricao_jardim = null;
         return parent::insert();
     }
 

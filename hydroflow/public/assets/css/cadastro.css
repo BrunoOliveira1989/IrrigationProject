@@ -1,0 +1,136 @@
+.content .register {
+    width: calc(100% - 20px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.main .content .register .form-group {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+.main .content .register .form-group .input-field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.main .content .register .form-group .input-field .duplo-select {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.main .content .register .form-group .input-field .duplo-select .input {
+    flex-grow: 1;
+}
+
+.main .content .register .form-group .input-field.flex-2 {
+    flex-grow: 2;
+}
+
+.main .content .register .form-group .input-field.flex-3 {
+    flex-grow: 3;
+}
+
+.main .content .register .form-group .input-field.flex-5 {
+    flex-grow: 5;
+}
+
+.main .content .register .form-group .input-field.flex-10 {
+    flex-grow: 10;
+}
+
+.content .register .form-group .input-field label {
+    margin: 0 0 5px 5px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    color: var(--verde-claro);
+}
+
+.content .register .form-group .input-field .input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.content .register .form-group .input-field .input.textarea {
+    height: 150px;
+}
+
+.main .content .register .form-group .input-field .input.invalid {
+    border: 2px solid var(--vermelho);
+}
+
+.content .register .form-group .input-field .input:focus {
+    transform: scale(1.01);
+}
+
+.content .register .form-group .input-field .input::placeholder {
+    color: var(--preto);
+    opacity: 0.8;
+}
+
+.main .content .register .btn-add {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    color: var(--preto);
+    padding: 5px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: var(--branco);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.main .content .btn-add:hover {
+    transform: scale(1.01);
+}
+
+.btn-box {
+    display: flex;
+    gap: 10px;
+}
+
+.main .content .btn-register {
+    width: 200px;
+    margin: 10px 0 15px 5px;
+    align-self: flex-start;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--preto);
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: none;
+    background: var(--verde-claro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.main .content .btn-register:hover {
+    transform: scale(1.05);
+}
+
+.content .btn-register.cancel {
+    background-color: var(--vermelho);
+}
+
+.invalid-feedback {
+    font-family: "Poppins", sans-serif;
+    margin-top: 6px;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 100;
+    color: var(--vermelho);
+}

@@ -5,9 +5,11 @@
             "preencha os campos com as informções do dispositivo",
             "circuitry"
         );
+
+        include(TEMPLATE_PATH . "/messages.php")
     ?>
     <div class="content">
-        <form action="#" method="post" class="register" id="register">
+        <form action="#" method="post"class="register" id="register">
             <div class="form-group">
                 <div class="input-field">
                     <label for="jardim">Jardim</label>
@@ -18,17 +20,19 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label for="area">Área</label>
-                    <input class="input" type="text" name="area" id="area" placeholder="Selecione a Área" />
+                    <label for="id_zona">Zona</label>
+                    <select class="input" name="id_zona" id="id_zona">
+                        <?php foreach($zonas as $zona) : ?>
+                            <option value="<?= $zona->id ?>"><?= $zona->nome_zona ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
                 <div class="input-field">
-                    <label for="tip_dispositivo">Tipo de Dispositivo</label>
-                    <select class="input" name="tipo_dispositivio" id="tipo_dispositivio">
-                        <option value="" selected>Regador</option>
-                        <optgroup label="Sensores">
-                            <option value="">Umidade</option>
-                            <option value="">Temperatura</option>
-                        </optgroup>
+                    <label for="id_tipo_dispositivo">Tipo de Dispositivo</label>
+                    <select class="input" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
+                        <?php foreach($tipoDispositivos as $tipoDispositivo) : ?>
+                            <option value="<?= $tipoDispositivo->id ?>"><?= $tipoDispositivo->nome_tipo_dispositivo ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="input-field">
@@ -42,10 +46,10 @@
                     <input class="input" type="text" name="modelo_dispositivo" id="modelo_dispositivo" />
                 </div>
                 <div class="input-field">
-                    <label for="select_pino">Pinos do Arduino</label>
-                    <select class="input" name="tipo_dispositivio" id="tipo_dispositivio">
-                        <option value="" selected>3</option>
-                        <option value="">4</option>
+                    <label for="pino_arduino">Pinos do Arduino</label>
+                    <select class="input" name="pino_arduino" id="pino_arduino">
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
                     </select>
                 </div>
             </div>

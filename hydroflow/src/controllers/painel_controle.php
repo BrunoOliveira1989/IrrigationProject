@@ -2,4 +2,4 @@
 session_start();
 requireValidSession();
 
-loadTemplateView("painel_controle");
+loadTemplateView("painel_controle", ['nomeCss' => 'controle']);

@@ -6,4 +6,4 @@ loadModel("Dispositivo");
 
 $dispositivos = Dispositivo::get();
 
-loadTemplateView("registros_dispositivo", ['dispositivos' => $dispositivos]);
+loadTemplateView("registros_dispositivo", ['nomeCss' => 'registro', 'dispositivos' => $dispositivos]);

@@ -35,3 +35,7 @@ function loadTemplateView($viewName, $params = array()) {
 function renderTitle($title, $subtitle, $icon = null) {
     require_once(TEMPLATE_PATH . "/title.php");
 }
+
+function loadCss($nomeCss) {
+    require_once(TEMPLATE_PATH . "/css.php");
+}
