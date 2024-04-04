@@ -39,22 +39,20 @@
                     Tamanho
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
                 </div>
-                <div class="table-cell header">
+                <!-- <div class="table-cell header">
                     Funcionário
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
-                </div>
+                </div> -->
             </div>
-            <!-- <?php foreach($dispositivos as $dispositivo) :?> -->
-            <!-- <div class="table-row">
-                <div class="table-cell"><?= $dispositivo->id ?></div>
-                <div class="table-cell"><?= $dispositivo->nome_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->modelo_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->descricao ?></div>
-                <div class="table-cell"><?= $dispositivo->pino_arduino ?></div>
-                <div class="table-cell"><?= $dispositivo->id_tipo_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->id_zona ?></div>
-            </div> -->
-            <!-- <?php endforeach ?> -->
+            <?php foreach($jardins as $jardim) :?>
+            <div class="table-row">
+                <div class="table-cell"><?= $jardim->id ?></div>
+                <div class="table-cell"><?= $jardim->nome_jardim ?></div>
+                <div class="table-cell"><?= $jardim->logradouro . " N° " .  $jardim->numero ?></div>
+                <div class="table-cell"><?= $jardim->cep ?></div>
+                <div class="table-cell"><?= $jardim->tamanho?> m²</div>
+            </div>
+            <?php endforeach ?>
         </div>
         <a href="cadastro_jardim.php" class="btn-new"><i class="icon ph-bold ph-plus-circle"></i>Novo</a>
     </div>

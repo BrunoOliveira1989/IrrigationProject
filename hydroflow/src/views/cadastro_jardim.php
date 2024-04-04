@@ -127,9 +127,14 @@
             </div>
             <div class="btn-add">Adicionar Zona</div>
             <input type="hidden" name="contador" id="contador" value="1">
-            <button class="btn-register">
-                <i class="ph-bold ph-check-fat"></i>Cadastrar
-            </button>
+            <div class="btn-box">
+                <button type="submit" form="register" class="btn-register">
+                    <i class="ph-bold ph-check-fat"></i>Cadastrar
+                </button>
+                <a href="registros_jardim.php" class="btn-register cancel">
+                    <i class="ph-bold ph-x"></i>Cancelar
+                </a>
+            </div>
         </form>
     </div>
 </main>
