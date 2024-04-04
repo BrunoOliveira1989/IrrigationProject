@@ -1,6 +1,6 @@
 <?php
 
-class Dispositivo extends Model {
+class Jardim extends Model {
     protected static $tableName = "jardins";
     protected static $columns = [
         'id',
@@ -19,6 +19,7 @@ class Dispositivo extends Model {
     public function inserir() {
         $this->validar();
         if(!$this->descricao_jardim) $this->descricao_jardim = null;
+        if(!$this->id_funcionario) $this->id_funcionario = null;
         return parent::insert();
     }
 

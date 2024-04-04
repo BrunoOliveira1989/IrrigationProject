@@ -10,6 +10,7 @@
 .main .content .register .form-group {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -100,17 +101,24 @@
 
 .btn-box {
     display: flex;
+    align-self: flex-start;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .main .content .btn-register {
     width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     margin: 10px 0 15px 5px;
     align-self: flex-start;
     font-size: 20px;
     font-weight: 500;
+    text-decoration: none;
     color: var(--preto);
-    padding: 10px 25px;
+    padding: 10px 0;
     border-radius: 5px;
     border: none;
     background: var(--verde-claro);

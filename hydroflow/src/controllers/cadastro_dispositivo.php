@@ -3,6 +3,7 @@ session_start();
 requireValidSession();
 
 loadModel("Dispositivo");
+loadModel("Jardim");
 
 $exception = null;
 
@@ -18,12 +19,11 @@ if(count($_POST) > 0) {
 }
 
 $tipoDispositivos = Dispositivo::getFromOtherTable("TiposDispositivos");
-$zonas = Dispositivo::getFromOtherTable("Zonas");
-// $jardim = Dispositivo::consultaComInner("jardins",[],'j.id, j.nome_jardim, z.id, z.nome_zona', 'j INNER JOIN Zonas z ON j.id = z.id_jardim', 'j.id');
+$jardins = Jardim::get([], 'id, nome_jardim');
 
 loadTemplateView("cadastro_dispositivo", $_POST = [
     'nomeCss' => 'cadastro',
     'exception' => $exception,
     'tipoDispositivos' => $tipoDispositivos,
-    'zonas' => $zonas
+    'jardins' => $jardins
 ]);

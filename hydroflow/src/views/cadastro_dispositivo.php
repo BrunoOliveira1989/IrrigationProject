@@ -14,7 +14,10 @@
                 <div class="input-field">
                     <label for="jardim">Jardim</label>
                     <select class="input" name="jardim" id="jardim" class="input">
-                        <option value="">Parque Juca Mulato</option>
+                        <option value="" selected>Selecione um Jardim...</option>
+                        <?php foreach($jardins as $jardim) : ?>
+                            <option value="<?= $jardim->id ?>"><?= $jardim->nome_jardim ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
             </div>
@@ -22,9 +25,7 @@
                 <div class="input-field">
                     <label for="id_zona">Zona</label>
                     <select class="input" name="id_zona" id="id_zona">
-                        <?php foreach($zonas as $zona) : ?>
-                            <option value="<?= $zona->id ?>"><?= $zona->nome_zona ?></option>
-                        <?php endforeach ?>
+                        <option value="" id="zona" selected>Selecione uma Zona...</option>
                     </select>
                 </div>
                 <div class="input-field">
@@ -59,14 +60,14 @@
                     <textarea class="input textarea" name="descricao" id="descricao" cols="30" rows="10"></textarea>
                 </div>
             </div>
+            <div class="btn-box">
+                <button type="submit" form="register" class="btn-register">
+                    <i class="ph-bold ph-check-fat"></i>Cadastrar
+                </button>
+                <a href="registros_dispositivo.php" class="btn-register cancel">
+                    <i class="ph-bold ph-x"></i>Cancelar
+                </a>
+            </div>
         </form>
-        <div class="btn-box">
-            <button type="submit" form="register" class="btn-register">
-                <i class="ph-bold ph-check-fat"></i>Cadastrar
-            </button>
-            <a href="registros_dispositivo.php" class="btn-register cancel">
-                <i class="ph-bold ph-x"></i>Cancelar
-            </a>
-        </div>
     </div>
 </main>

@@ -54,6 +54,18 @@ class Model {
         }
         return $objects;
     }
+
+    public static function getFromInner($tableName, $filters = [], $columns = '*', $inner, $orderBy) {
+        $objects = [];
+        $result = static::consultaComInner($tableName, $filters, $columns, $inner, $orderBy);
+        if($result) {
+            $class = get_called_class();
+            while ($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+        return $objects;
+    }
     
     public static function getResultSetFromSelect($filters = [], $columns = '*') {
         $sql = "SELECT {$columns} FROM " . static::$tableName . static::getFilters($filters);

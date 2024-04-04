@@ -20,4 +20,14 @@
         thermometer.style.setProperty('--progress-value', value);
         thermometer.dataset.value = value;
     }
+
+    const vazaoLabel = document.querySelector('.vazao-label > strong');
+    const input3 = document.getElementById('vazao');
+
+    input3.oninput = ({ target }) => {
+        let value = target.value <= 500 && target.value >= 0 ? target.value : 0;
+        vazaoLabel.textContent = value;
+        // thermometer.style.setProperty('--progress-value', value);
+        // thermometer.dataset.value = value;
+    }
 })()

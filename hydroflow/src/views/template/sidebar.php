@@ -21,21 +21,21 @@
       <hr />
     </div>
     <div class="nav-content">
-      <div class="nav-button">
+      <a href="" class="nav-button">
         <i class="icon ph-bold ph-chart-line"></i><span>Gráficos</span>
-      </div>
-      <div class="nav-button">
-        <i class="icon ph-bold ph-faders"></i><a href="painel_controle.php">Painel de Controle</a>
-      </div>
-      <div class="nav-button">
-        <i class="icon ph-bold ph-flag"></i><span>Zona</span>
-      </div>
-      <div class="nav-button">
-        <i class="icon ph-bold ph-potted-plant"></i><a href="">Jardim</a>
-      </div>
-      <div class="nav-button">
-        <i class="icon ph-bold ph-circuitry"></i><a href="registros_dispositivo.php">Dispositivos</a>
-      </div>
+      </a>
+      <a href="painel_controle.php" class="nav-button">
+        <i class="icon ph-bold ph-faders"></i><span>Painel de Controle</span>
+      </a>
+      <!-- <a href="" class="nav-button">
+        <i class="icon ph-bold ph-flag"></i><span>Usuário</span>
+      </a> -->
+      <a href="registros_jardim.php" class="nav-button">
+        <i class="icon ph-bold ph-potted-plant"></i><span>Jardim</span>
+      </a>
+      <a href="registros_dispositivo.php" class="nav-button">
+        <i class="icon ph-bold ph-circuitry"></i><span>Dispositivos</span>
+      </a>
       <div class="nav-content-highlight"></div>
     </div>
     <input type="checkbox" id="nav-footer-toggle" class="nav-footer-toggle" />
@@ -45,7 +45,7 @@
           <img src="/assets/img/usuario-padrao.png" alt="" />
         </div>
         <div class="nav-footer-titlebox">
-          <a href="" class="nav-footer-title">usuário</a>
+          <span class="nav-footer-title">usuário</span>
           <span class="nav-footer-subtitle">Admin</span>
         </div>
         <label for="nav-footer-toggle"><i class="icon ph-bold ph-caret-up"></i></label>

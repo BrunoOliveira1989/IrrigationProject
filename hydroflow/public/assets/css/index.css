@@ -122,8 +122,11 @@ body {
 }
 
 .nav-bar a {
-    color: inherit;
     text-decoration: inherit;
+}
+
+.nav-bar .nav-header a {
+    color: inherit;
 }
 
 .nav-bar input[type="checkbox"] {
@@ -325,6 +328,10 @@ label[for="nav-toggle"] {
     flex-direction: column;
     z-index: 2;
     transition: width 0.2s, height 0.2s;
+}
+
+.nav-footer a {
+    color: var(--branco);
 }
 
 .nav-footer-heading {
