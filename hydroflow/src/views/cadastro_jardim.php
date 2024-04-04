@@ -34,18 +34,18 @@
             <div class="form-group">
                 <div class="input-field">
                     <label for="cep">CEP</label>
-                    <input class="input invalid" type="text" name="cep0" id="cep" placeholder="Digite o cep" />
+                    <input class="input" type="text" name="cep0" id="cep" placeholder="Digite o cep" />
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-field flex-10">
                     <label for="logradouro">Endereço</label>
-                    <input class="input invalid" type="text" name="logradouro0" id="logradouro"
+                    <input class="input" type="text" name="logradouro0" id="logradouro"
                         placeholder="Digite o Endereço" />
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-field">
                     <label for="numero">Nº</label>
-                    <input class="input invalid" type="number" min="0" max="5000" name="numero0" id="numero"
+                    <input class="input" type="number" min="0" max="5000" name="numero0" id="numero"
                         placeholder="Digite o Numero" />
                     <div class="invalid-feedback"></div>
                 </div>
@@ -53,17 +53,17 @@
             <div class="form-group">
                 <div class="input-field flex-3">
                     <label for="bairro">Bairro</label>
-                    <input class="input invalid" type="text" name="bairro0" id="bairro" placeholder="Digite o Bairro" />
+                    <input class="input" type="text" name="bairro0" id="bairro" placeholder="Digite o Bairro" />
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-field flex-5">
                     <label for="cidade">Cidade</label>
-                    <input class="input invalid" type="text" name="cidade0" id="cidade" placeholder="Digite a cidade" />
+                    <input class="input" type="text" name="cidade0" id="cidade" placeholder="Digite a cidade" />
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="input-field">
                     <label for="estado">Estado</label>
-                    <input class="input invalid" type="text" name="estado0" id="estado"
+                    <input class="input" type="text" name="estado0" id="estado"
                         placeholder="Digite o Estado" />
                     <div class="invalid-feedback"></div>
                 </div>

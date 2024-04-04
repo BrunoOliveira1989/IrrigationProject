@@ -2,4 +2,11 @@
 session_start();
 requireValidSession();
 
-loadTemplateView("painel_controle", ['nomeCss' => 'controle']);
+loadModel("Jardim");
+
+$jardins = Jardim::get();
+
+loadTemplateView("painel_controle", [
+    'nomeCss' => 'controle',
+    'jardins' => $jardins
+]);

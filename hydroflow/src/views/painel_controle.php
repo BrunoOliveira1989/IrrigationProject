@@ -10,7 +10,10 @@
         <div class="input-field">
             <label for="id_jardim">Jardim</label>
             <select class="input" name="id_jardim" id="id_jardim">
-                <option value="">Parque Linear</option>
+                <option value="" selected>Selecione um Jardim...</option>
+                <?php foreach($jardins as $jardim) : ?>
+                    <option value="<?= $jardim->id ?>"><?= $jardim->nome_jardim ?></option>
+                <?php endforeach ?>
             </select>
         </div>
         <div class="control-box">
