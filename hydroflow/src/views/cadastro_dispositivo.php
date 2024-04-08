@@ -11,7 +11,7 @@
     <div class="content">
         <form action="#" method="post"class="register" id="register">
             <div class="form-group">
-                <div class="input-field">
+                <div class="input-field flex-10">
                     <label for="jardim">Jardim</label>
                     <select class="input" name="jardim" id="jardim" class="input">
                         <option value="" selected>Selecione um Jardim...</option>
@@ -20,14 +20,14 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
                 <div class="input-field">
                     <label for="id_zona">Zona</label>
                     <select class="input" name="id_zona" id="id_zona">
                         <option value="" id="zona" selected>Selecione uma Zona...</option>
                     </select>
                 </div>
+            </div>
+            <div class="form-group">
                 <div class="input-field">
                     <label for="id_tipo_dispositivo">Tipo de Dispositivo</label>
                     <select class="input" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
@@ -40,18 +40,9 @@
                     <label for="nome_dispositivo">Nome do Dispositivo</label>
                     <input class="input" type="text" name="nome_dispositivo" id="nome_dispositivo" />
                 </div>
-            </div>
-            <div class="form-group">
                 <div class="input-field">
                     <label for="modelo_dispositivo">Modelo do Dispositivo</label>
                     <input class="input" type="text" name="modelo_dispositivo" id="modelo_dispositivo" />
-                </div>
-                <div class="input-field">
-                    <label for="pino_arduino">Pinos do Arduino</label>
-                    <select class="input" name="pino_arduino" id="pino_arduino">
-                        <option value="3" selected>3</option>
-                        <option value="4">4</option>
-                    </select>
                 </div>
             </div>
             <div class="form-group">
