@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 05/04/2024 às 00:24
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Host: localhost
+-- Generation Time: Apr 09, 2024 at 01:12 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `irrigationdb`
+-- Database: `IrrigationDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `alocacaofuncionarios`
+-- Table structure for table `alocacaofuncionarios`
 --
 
 CREATE TABLE `alocacaofuncionarios` (
@@ -36,7 +36,7 @@ CREATE TABLE `alocacaofuncionarios` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `dispositivos`
+-- Table structure for table `dispositivos`
 --
 
 CREATE TABLE `dispositivos` (
@@ -50,7 +50,7 @@ CREATE TABLE `dispositivos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `dispositivos`
+-- Dumping data for table `dispositivos`
 --
 
 INSERT INTO `dispositivos` (`id`, `nome_dispositivo`, `modelo_dispositivo`, `descricao`, `pino_arduino`, `id_tipo_dispositivo`, `id_zona`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `dispositivos` (`id`, `nome_dispositivo`, `modelo_dispositivo`, `des
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `funcionarios`
+-- Table structure for table `funcionarios`
 --
 
 CREATE TABLE `funcionarios` (
@@ -82,7 +82,7 @@ CREATE TABLE `funcionarios` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `jardins`
+-- Table structure for table `jardins`
 --
 
 CREATE TABLE `jardins` (
@@ -100,7 +100,7 @@ CREATE TABLE `jardins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `jardins`
+-- Dumping data for table `jardins`
 --
 
 INSERT INTO `jardins` (`id`, `nome_jardim`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `tamanho`, `descricao_jardim`, `id_funcionario`) VALUES
@@ -116,7 +116,7 @@ INSERT INTO `jardins` (`id`, `nome_jardim`, `cep`, `logradouro`, `numero`, `bair
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `parametrosirrigacoes`
+-- Table structure for table `parametrosirrigacoes`
 --
 
 CREATE TABLE `parametrosirrigacoes` (
@@ -136,7 +136,33 @@ CREATE TABLE `parametrosirrigacoes` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `telefones`
+-- Table structure for table `status_sistema`
+--
+
+CREATE TABLE `status_sistema` (
+  `id` int(11) NOT NULL,
+  `automatico` tinyint(1) NOT NULL,
+  `valvula` tinyint(1) NOT NULL,
+  `motor` tinyint(1) NOT NULL,
+  `controle_temperatura` tinyint(1) NOT NULL,
+  `controle_umidade` tinyint(1) NOT NULL,
+  `controle_consumo` tinyint(1) NOT NULL,
+  `id_jardim` int(11) NOT NULL,
+  `id_area` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `status_sistema`
+--
+
+INSERT INTO `status_sistema` (`id`, `automatico`, `valvula`, `motor`, `controle_temperatura`, `controle_umidade`, `controle_consumo`, `id_jardim`, `id_area`) VALUES
+(50, 0, 1, 1, 1, 1, 1, 111, 999),
+(55, 0, 0, 0, 1, 0, 0, 115, 999);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telefones`
 --
 
 CREATE TABLE `telefones` (
@@ -148,7 +174,7 @@ CREATE TABLE `telefones` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tiposdispositivos`
+-- Table structure for table `tiposdispositivos`
 --
 
 CREATE TABLE `tiposdispositivos` (
@@ -158,7 +184,7 @@ CREATE TABLE `tiposdispositivos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `tiposdispositivos`
+-- Dumping data for table `tiposdispositivos`
 --
 
 INSERT INTO `tiposdispositivos` (`id`, `nome_tipo_dispositivo`, `descricao_tipo_dispositivo`) VALUES
@@ -181,7 +207,7 @@ INSERT INTO `tiposdispositivos` (`id`, `nome_tipo_dispositivo`, `descricao_tipo_
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tiposirrigacoes`
+-- Table structure for table `tiposirrigacoes`
 --
 
 CREATE TABLE `tiposirrigacoes` (
@@ -191,7 +217,7 @@ CREATE TABLE `tiposirrigacoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `tiposirrigacoes`
+-- Dumping data for table `tiposirrigacoes`
 --
 
 INSERT INTO `tiposirrigacoes` (`id`, `nome_tipo_irrigacao`, `descricao_tipo_irrigacao`) VALUES
@@ -206,7 +232,7 @@ INSERT INTO `tiposirrigacoes` (`id`, `nome_tipo_irrigacao`, `descricao_tipo_irri
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tiposplantas`
+-- Table structure for table `tiposplantas`
 --
 
 CREATE TABLE `tiposplantas` (
@@ -216,7 +242,7 @@ CREATE TABLE `tiposplantas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `tiposplantas`
+-- Dumping data for table `tiposplantas`
 --
 
 INSERT INTO `tiposplantas` (`id`, `nome_tipo_planta`, `descricao_tipo_planta`) VALUES
@@ -225,7 +251,7 @@ INSERT INTO `tiposplantas` (`id`, `nome_tipo_planta`, `descricao_tipo_planta`) V
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -235,7 +261,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `usuario`, `senha`) VALUES
@@ -244,7 +270,7 @@ INSERT INTO `usuarios` (`idUsuario`, `usuario`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `zonas`
+-- Table structure for table `zonas`
 --
 
 CREATE TABLE `zonas` (
@@ -257,7 +283,7 @@ CREATE TABLE `zonas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `zonas`
+-- Dumping data for table `zonas`
 --
 
 INSERT INTO `zonas` (`id`, `nome_zona`, `descricao_zona`, `id_tipo_planta`, `id_tipo_irrigacao`, `id_jardim`) VALUES
@@ -270,11 +296,11 @@ INSERT INTO `zonas` (`id`, `nome_zona`, `descricao_zona`, `id_tipo_planta`, `id_
 (24, 'a2', 'cadfadfa', 1, 1, 8);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `alocacaofuncionarios`
+-- Indexes for table `alocacaofuncionarios`
 --
 ALTER TABLE `alocacaofuncionarios`
   ADD PRIMARY KEY (`ID`),
@@ -282,7 +308,7 @@ ALTER TABLE `alocacaofuncionarios`
   ADD KEY `ID_Funcionario` (`ID_Funcionario`);
 
 --
--- Índices de tabela `dispositivos`
+-- Indexes for table `dispositivos`
 --
 ALTER TABLE `dispositivos`
   ADD PRIMARY KEY (`id`),
@@ -290,20 +316,20 @@ ALTER TABLE `dispositivos`
   ADD KEY `ID_TipoDispositivo` (`id_tipo_dispositivo`) USING BTREE;
 
 --
--- Índices de tabela `funcionarios`
+-- Indexes for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Índices de tabela `jardins`
+-- Indexes for table `jardins`
 --
 ALTER TABLE `jardins`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ID_Funcionario` (`id_funcionario`) USING BTREE;
 
 --
--- Índices de tabela `parametrosirrigacoes`
+-- Indexes for table `parametrosirrigacoes`
 --
 ALTER TABLE `parametrosirrigacoes`
   ADD PRIMARY KEY (`ID`),
@@ -311,38 +337,44 @@ ALTER TABLE `parametrosirrigacoes`
   ADD KEY `ID_TipoIrrigacao` (`ID_TipoIrrigacao`);
 
 --
--- Índices de tabela `telefones`
+-- Indexes for table `status_sistema`
+--
+ALTER TABLE `status_sistema`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telefones`
 --
 ALTER TABLE `telefones`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID_Funcionario` (`ID_Funcionario`);
 
 --
--- Índices de tabela `tiposdispositivos`
+-- Indexes for table `tiposdispositivos`
 --
 ALTER TABLE `tiposdispositivos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `tiposirrigacoes`
+-- Indexes for table `tiposirrigacoes`
 --
 ALTER TABLE `tiposirrigacoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `tiposplantas`
+-- Indexes for table `tiposplantas`
 --
 ALTER TABLE `tiposplantas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Índices de tabela `zonas`
+-- Indexes for table `zonas`
 --
 ALTER TABLE `zonas`
   ADD PRIMARY KEY (`id`),
@@ -351,99 +383,105 @@ ALTER TABLE `zonas`
   ADD KEY `ID_Irrigacao` (`id_tipo_irrigacao`) USING BTREE;
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `alocacaofuncionarios`
+-- AUTO_INCREMENT for table `alocacaofuncionarios`
 --
 ALTER TABLE `alocacaofuncionarios`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `dispositivos`
+-- AUTO_INCREMENT for table `dispositivos`
 --
 ALTER TABLE `dispositivos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de tabela `funcionarios`
+-- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `jardins`
+-- AUTO_INCREMENT for table `jardins`
 --
 ALTER TABLE `jardins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de tabela `parametrosirrigacoes`
+-- AUTO_INCREMENT for table `parametrosirrigacoes`
 --
 ALTER TABLE `parametrosirrigacoes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tiposdispositivos`
+-- AUTO_INCREMENT for table `status_sistema`
+--
+ALTER TABLE `status_sistema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT for table `tiposdispositivos`
 --
 ALTER TABLE `tiposdispositivos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de tabela `tiposirrigacoes`
+-- AUTO_INCREMENT for table `tiposirrigacoes`
 --
 ALTER TABLE `tiposirrigacoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `zonas`
+-- AUTO_INCREMENT for table `zonas`
 --
 ALTER TABLE `zonas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- Restrições para tabelas despejadas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `alocacaofuncionarios`
+-- Constraints for table `alocacaofuncionarios`
 --
 ALTER TABLE `alocacaofuncionarios`
   ADD CONSTRAINT `AlocacaoFuncionarios_ibfk_1` FOREIGN KEY (`ID_Jardim`) REFERENCES `jardins` (`id`),
   ADD CONSTRAINT `AlocacaoFuncionarios_ibfk_2` FOREIGN KEY (`ID_Funcionario`) REFERENCES `funcionarios` (`ID`);
 
 --
--- Restrições para tabelas `dispositivos`
+-- Constraints for table `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  ADD CONSTRAINT `Dispositivos_ibfk_1` FOREIGN KEY (`ID_Zona`) REFERENCES `zonas` (`id`),
+  ADD CONSTRAINT `Dispositivos_ibfk_1` FOREIGN KEY (`id_zona`) REFERENCES `zonas` (`id`),
   ADD CONSTRAINT `Dispositivos_ibfk_2` FOREIGN KEY (`id_tipo_dispositivo`) REFERENCES `tiposdispositivos` (`id`);
 
 --
--- Restrições para tabelas `parametrosirrigacoes`
+-- Constraints for table `parametrosirrigacoes`
 --
 ALTER TABLE `parametrosirrigacoes`
   ADD CONSTRAINT `ParametrosIrrigacoes_ibfk_1` FOREIGN KEY (`ID_TipoPlanta`) REFERENCES `tiposplantas` (`id`),
   ADD CONSTRAINT `ParametrosIrrigacoes_ibfk_2` FOREIGN KEY (`ID_TipoIrrigacao`) REFERENCES `tiposirrigacoes` (`id`);
 
 --
--- Restrições para tabelas `telefones`
+-- Constraints for table `telefones`
 --
 ALTER TABLE `telefones`
   ADD CONSTRAINT `Telefones_ibfk_1` FOREIGN KEY (`ID_Funcionario`) REFERENCES `funcionarios` (`ID`);
 
 --
--- Restrições para tabelas `zonas`
+-- Constraints for table `zonas`
 --
 ALTER TABLE `zonas`
-  ADD CONSTRAINT `Zonas_ibfk_1` FOREIGN KEY (`ID_Jardim`) REFERENCES `jardins` (`id`),
+  ADD CONSTRAINT `Zonas_ibfk_1` FOREIGN KEY (`id_jardim`) REFERENCES `jardins` (`id`),
   ADD CONSTRAINT `Zonas_ibfk_2` FOREIGN KEY (`id_tipo_planta`) REFERENCES `tiposplantas` (`id`),
   ADD CONSTRAINT `Zonas_ibfk_3` FOREIGN KEY (`id_tipo_irrigacao`) REFERENCES `tiposirrigacoes` (`id`);
 COMMIT;
