@@ -18,7 +18,7 @@ if(count($_POST) > 0) {
     }
 }
 
-$tipoDispositivos = Dispositivo::getFromOtherTable("TiposDispositivos");
+$tipoDispositivos = Dispositivo::getFromOtherTable("tiposdispositivos");
 $jardins = Jardim::get([], 'id, nome_jardim');
 
 loadTemplateView("cadastro_dispositivo", $_POST = [

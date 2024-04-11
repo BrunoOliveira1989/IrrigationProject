@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/assets/img/drop-bold.svg" type="image/x-icon">
   <link rel="stylesheet" href="/assets/css/index.css" />
   <?php loadCss($nomeCss) ?>
   <link rel="stylesheet" href="/assets/css/menssagem.css" />
@@ -24,17 +25,17 @@
       <a href="" class="nav-button">
         <i class="icon ph-bold ph-chart-line"></i><span>Gráficos</span>
       </a>
-      <a href="painel_controle.php" class="nav-button">
-        <i class="icon ph-bold ph-faders"></i><span>Painel de Controle</span>
-      </a>
-      <a href="parametros.php" class="nav-button">
-        <i class="icon ph-bold ph-faders-horizontal"></i><span>Parâmetros</span>
-      </a>
       <a href="registros_jardim.php" class="nav-button">
         <i class="icon ph-bold ph-potted-plant"></i><span>Jardim</span>
       </a>
       <a href="registros_dispositivo.php" class="nav-button">
         <i class="icon ph-bold ph-circuitry"></i><span>Dispositivos</span>
+      </a>
+      <a href="painel_controle.php" class="nav-button">
+        <i class="icon ph-bold ph-faders"></i><span>Painel de Controle</span>
+      </a>
+      <a href="parametros.php" class="nav-button">
+        <i class="icon ph-bold ph-faders-horizontal"></i><span>Parâmetros</span>
       </a>
       <div class="nav-content-highlight"></div>
     </div>
