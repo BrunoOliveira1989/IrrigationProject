@@ -19,7 +19,7 @@
         </form>
         <div class="table">
             <div class="table-header">
-                <div class="table-cell header">
+                <div class="table-cell header id">
                     Código
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
                 </div>
@@ -50,7 +50,7 @@
             </div>
             <?php foreach($dispositivos as $dispositivo) :?>
             <div class="table-row">
-                <div class="table-cell"><?= $dispositivo->id ?></div>
+                <div class="table-cell id"><span class="item"><?= $dispositivo->id ?></span></div>
                 <div class="table-cell"><?= $dispositivo->nome_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->modelo_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->descricao ?></div>

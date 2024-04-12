@@ -89,6 +89,7 @@
     background-color: var(--verde-claro);
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 
 .content .table .table-row {
