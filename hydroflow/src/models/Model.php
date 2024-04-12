@@ -97,6 +97,11 @@ class Model {
         }
     }
 
+    public static function getCount ($filters = []) {
+        $result = static::getResultSetFromSelect($filters, "count(*) as count");
+        return $result->fetch_assoc()["count"];
+    }
+
 
     public function insert() {
         $sql = "INSERT INTO " . static::$tableName . " (" . implode(",", static::$columns) . ") VALUES (";

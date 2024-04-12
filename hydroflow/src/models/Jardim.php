@@ -30,4 +30,8 @@ class Jardim extends Model {
             throw new ValidationException($errors);
         }
     }
+
+    public static function getZonas($id) {
+        return static::getCount(['raw' => "id = {$id}"]);
+    }
 }

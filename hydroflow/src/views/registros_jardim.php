@@ -19,7 +19,7 @@
         </form>
         <div class="table">
             <div class="table-header">
-                <div class="table-cell header">
+                <div class="table-cell header id">
                     Código
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
                 </div>
@@ -39,18 +39,23 @@
                     Tamanho
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
                 </div>
-                <!-- <div class="table-cell header">
-                    Funcionário
+                <div class="table-cell header">
+                    Áreas
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
-                </div> -->
+                </div>
             </div>
             <?php foreach($jardins as $jardim) :?>
             <div class="table-row">
-                <div class="table-cell"><?= $jardim->id ?></div>
+                <div class="table-cell id"><span class="item"><?= $jardim->id ?></span></div>
                 <div class="table-cell"><?= $jardim->nome_jardim ?></div>
                 <div class="table-cell"><?= $jardim->logradouro . " N° " .  $jardim->numero ?></div>
                 <div class="table-cell"><?= $jardim->cep ?></div>
                 <div class="table-cell"><?= $jardim->tamanho?> m²</div>
+                <div class="table-cell">
+                    <?php foreach ($zonas as $zona) : ?>
+                        <?= $zona->id_jardim == $jardim->id ? "<span class='item'>{$zona->nome_zona}</span>" : "" ?>
+                    <?php endforeach ?>
+                </div>
             </div>
             <?php endforeach ?>
         </div>
