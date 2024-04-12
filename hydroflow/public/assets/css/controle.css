@@ -14,11 +14,22 @@
   justify-content: center;
 }
 
-.content.control .input-field {
+.content.control .form-group {
   width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.content.control .input-field {
+  flex: 2;
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+}
+
+.content.control .input-field.flex-5 {
+  flex: 5;
 }
 
 .content.control .input-field label {
@@ -124,52 +135,70 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   padding: 0 30px;
 }
 
 .content .control-column .error-display {
-  width: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  border: 2px solid var(--preto);
-  font-weight: 600;
-  text-align: center;
-  color: var(--preto);
-  text-align: center;
-  background-color: var(--verde-claro);
-  overflow: hidden;
-}
-
-.content .control-column .error-display .error-label {
-  width: 90%;
-  padding: 5px 0;
-  border-bottom: 2px solid var(--verde-escuro);
-}
-
-.content .control-column .error-display .error-box {
+  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.content .control-column .error-display .error-box .icon {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  font-size: 40px;
-}
-
-.content .control-column .error-display .error-box .error-status {
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
   padding: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.error-display .icon {
+  display: inline-block;
+  color: #7e8794;
+  font-size: 40px;
+  margin: 0 20px;
+}
+
+.error-display .detalhes {
+  flex: 1;
+  display: block;
+  list-style: none;
+}
+
+.error-display .detalhes li {
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #7e8794;
+}
+
+.error-display .detalhes li:last-child span {
+  font-weight: normal;
+  color: rgba(230, 245, 255, 0.32);
+}
+
+.error-display .detalhes span {
+  display: block;
+  margin-top: -24px;
+  padding-right: 16px;
+  font-weight: 600;
+  text-align: right;
+  color: #c1c6cb;
+}
+
+.error-display .detalhes span.status {
+  color: var(--verde-claro);
+}
+
+.error-display .detalhes span.status::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background-color: currentColor;
+  border-radius: 50%;
+  margin-right: 4px;
+  margin-top: -2px;
+  vertical-align: middle;
 }
 
 .content .progress {
@@ -178,6 +207,7 @@
   --progress-size: 150px;
   --progress-inner-size: calc(var(--progress-size) - 20px);
   border: 5px solid var(--azul-claro);
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0, 0.5));
 }
 
 .content .progress.thermometer {
@@ -287,6 +317,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 20px;
 }
 
 .info-row {
@@ -311,6 +342,23 @@
   color: var(--branco);
 }
 
+.info-item.svg .info-label {
+  margin-bottom: 0;
+}
+
+.info-item.svg span {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--verde-claro);
+}
+
+.info-item svg {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0, 0.5));
+  transition: all 0.3s;
+}
+
 /* .info-item .info-label.vazao {
   margin-bottom: 50px;
   font-size: 24px;
@@ -326,6 +374,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0, 0.5));
 }
 
 .vazao-container .vazao-input {
