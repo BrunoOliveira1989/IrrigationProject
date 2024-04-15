@@ -9,8 +9,8 @@
     <div class="content control">
         <div class="form-group">
             <div class="input-field flex-5">
-                <label for="jardim">Jardim</label>
-                <select class="input" name="jardim" id="jardim" class="input">
+                <label for="id_jardim">Jardim</label>
+                <select class="input" name="jardim" id="id_jardim" class="input">
                     <option value="" selected>Selecione um Jardim...</option>
                     <?php foreach ($jardins as $jardim): ?>
                         <option value="<?= $jardim->id ?>"><?= $jardim->nome_jardim ?></option>
@@ -19,7 +19,7 @@
             </div>
             <div class="input-field">
                 <label for="id_zona">Zona</label>
-                <select class="input" name="id_zona" id="id_zona">
+                <select class="input" name="id_zona" id="id_area">
                     <option value="" id="zona" selected>Selecione uma Zona...</option>
                 </select>
             </div>
@@ -30,42 +30,42 @@
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-gear-six"></i>Automático</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-auto">
+                            <input type="checkbox" class="switch-input" id="automatico">
                             <label for="switch-auto" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-funnel"></i>Valvula</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-valve">
+                            <input type="checkbox" class="switch-input" id="valvula">
                             <label for="switch-valve" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-engine"></i>Bomba</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-bomb">
+                            <input type="checkbox" class="switch-input" id="motor">
                             <label for="switch-bomb" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-thermometer"></i>Temperatura</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-temp">
+                            <input type="checkbox" class="switch-input" id="controle_temperatura">
                             <label for="switch-temp" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-drop"></i>Umidade</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-umid">
+                            <input type="checkbox" class="switch-input" id="controle_umidade">
                             <label for="switch-umid" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-cube-transparent"></i>Volume</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="switch-volume">
+                            <input type="checkbox" class="switch-input" id="controle_consumo">
                             <label for="switch-volume" class="switch-label"></label>
                         </div>
                     </div>

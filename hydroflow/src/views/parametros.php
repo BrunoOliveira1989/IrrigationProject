@@ -12,8 +12,8 @@
         <form action="#" method="post"class="register" id="register">
             <div class="form-group">
                 <div class="input-field flex-10">
-                    <label for="jardim">Jardim</label>
-                    <select class="input" name="jardim" id="jardim" class="input">
+                    <label for="id_jardim">Jardim</label>
+                    <select class="input" name="jardim" id="id_jardim" class="input">
                         <option value="" selected>Selecione um Jardim...</option>
                         <?php foreach($jardins as $jardim) : ?>
                             <option value="<?= $jardim->id ?>"><?= $jardim->nome_jardim ?></option>
@@ -21,8 +21,8 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <label for="id_zona">Zona</label>
-                    <select class="input" name="id_zona" id="id_zona">
+                    <label for="id_area">Zona</label>
+                    <select class="input" name="id_zona" id="id_area">
                         <option value="" id="zona" selected>Selecione uma Zona...</option>
                     </select>
                 </div>
@@ -31,8 +31,8 @@
                 <div class="coluna-1">
                     <div class="form-group">
                         <div class="input-field">
-                            <label for="hora_inicio">Hora de início</label>
-                            <input type="time" class="input" name="hora_inicio" id="hora_inicio">
+                            <label for="horario_inicio">Hora de início</label>
+                            <input type="time" class="input" name="hora_inicio" id="horario_inicio">
                         </div>
                         <div class="input-field">
                             <label for="duracao">Duração (min)</label>
