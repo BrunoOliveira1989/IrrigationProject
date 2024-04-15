@@ -31,42 +31,42 @@
                         <sapn class="control-label"><i class="icon ph-bold ph-gear-six"></i>Automático</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="automatico">
-                            <label for="switch-auto" class="switch-label"></label>
+                            <label for="automatico" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-funnel"></i>Valvula</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="valvula">
-                            <label for="switch-valve" class="switch-label"></label>
+                            <label for="valvula" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-engine"></i>Bomba</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="motor">
-                            <label for="switch-bomb" class="switch-label"></label>
+                            <label for="motor" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-thermometer"></i>Temperatura</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="controle_temperatura">
-                            <label for="switch-temp" class="switch-label"></label>
+                            <label for="controle_temperatura" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-drop"></i>Umidade</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="controle_umidade">
-                            <label for="switch-umid" class="switch-label"></label>
+                            <label for="controle_umidade" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-cube-transparent"></i>Volume</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="controle_consumo">
-                            <label for="switch-volume" class="switch-label"></label>
+                            <label for="controle_consumo" class="switch-label"></label>
                         </div>
                     </div>
                 </div>
