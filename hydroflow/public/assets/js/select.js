@@ -1,6 +1,6 @@
 (function () {
-    let zona = document.getElementById("id_zona");
-    let jardim = document.getElementById("jardim");
+    let zona = document.getElementById("id_area");
+    let jardim = document.getElementById("id_jardim");
     jardim.addEventListener("change", async function() {
       var jardimValor = jardim.value;
       const response = await fetch("select_zona.php?id=" + jardimValor);
