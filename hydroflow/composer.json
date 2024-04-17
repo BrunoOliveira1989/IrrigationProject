@@ -1,0 +1,6 @@
+{
+    "require": {
+        "influxdata/influxdb-client-php": "*",
+        "guzzlehttp/guzzle": "*"
+    }
+}
