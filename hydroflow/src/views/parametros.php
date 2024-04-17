@@ -104,12 +104,12 @@
                 </div>
             </div>
             <div class="btn-box">
+                <!-- <button type="submit" form="register" class="btn-register">
+                    <i class="ph-bold ph-file-arrow-up"></i>Salvar
+                </button> -->
                 <button type="submit" form="register" class="btn-register">
-                    <i class="ph-bold ph-check-fat"></i>Salvar
+                    <i class="ph-bold ph-cloud-arrow-up"></i>Gravar
                 </button>
-                <!-- <a href="registros_dispositivo.php" class="btn-register cancel">
-                    <i class="ph-bold ph-x"></i>Cancelar
-                </a> -->
             </div>
         </form>
     </div>

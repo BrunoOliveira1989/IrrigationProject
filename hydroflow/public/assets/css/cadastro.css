@@ -186,10 +186,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     margin: 10px 0 15px 5px;
+    gap: 10px;
     align-self: flex-start;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     text-decoration: none;
     color: var(--preto);
@@ -207,6 +207,10 @@
 
 .content .btn-register.cancel {
     background-color: var(--vermelho);
+}
+
+.content .btn-register.gravar {
+    background-color: var(--azul-claro);
 }
 
 .invalid-feedback {

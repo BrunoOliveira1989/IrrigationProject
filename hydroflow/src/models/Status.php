@@ -14,9 +14,4 @@ class Status extends Model {
         'id_jardim',
         'id_area'
     ];
-
-    public static function getCheckboxesValues($filters = [], $columns = '*') {
-        $result = static::getResultSetFromSelect($filters);
-        return $result ? $result->fetch_assoc() : null;
-    }
 }

@@ -66,6 +66,11 @@ class Model {
         }
         return $objects;
     }
+
+    public static function getCheckboxesValues($filters = [], $columns = '*') {
+        $result = static::getResultSetFromSelect($filters);
+        return $result ? $result->fetch_assoc() : null;
+    }
     
     public static function getResultSetFromSelect($filters = [], $columns = '*') {
         $sql = "SELECT {$columns} FROM " . static::$tableName . static::getFilters($filters);
