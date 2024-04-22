@@ -7,15 +7,7 @@
     );
     ?>
 
-    
-<div id="valores">
-        <h2>Últimos Valores do InfluxDB</h2>
-        <ul id="lista-valores">
-            <!-- Os valores serão inseridos aqui -->
-        </ul>
-    </div>
-    
-    <div id="echarts_grafico_linha" style="width: auto; height: 400px;"></div><br><br>
+<div id="echarts_grafico_linha" style="width: auto; height: 400px;"></div><br><br>
 
     <div id="echarts_grafico_barra" style="width: auto; height: 400px;"></div>
 </main>
