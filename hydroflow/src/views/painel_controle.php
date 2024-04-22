@@ -95,7 +95,7 @@
                                 <span>%</span>
                             </span>
                         </div>
-                        <input type="hidden" min="0" max="50" step="1">
+                        <input type="hidden" min="0" max="50" step="1" id='umidade'>
                     </div>
                     <div class="info-item">
                         <div class="info-label">
@@ -111,7 +111,7 @@
                                 <span>°C</span>
                             </span>
                         </div>
-                        <input id="thermometer" type="hidden" min="0" max="50" step="1">
+                        <input id="thermometer" type="hidden" min="0" max="50" step="1" id='temperatura'>
                     </div>
                     <div class="info-item">
                         <div class="info-label vazao">
@@ -134,7 +134,7 @@
                                 <span class="unit-vazao">m/s</span>
                             </span>
                         </div>
-                        <input id="vazao" type="hidden" min="0" max="500" step="1">
+                        <input id="vazao" type="hidden" min="0" max="500" step="1" id='vazao'>
                     </div>
                 </div>
                 <div class="info-row">
@@ -157,7 +157,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span>Ligado</span>
+                        <span id='motor'>Ligado</span>
                     </div>
                     <div class="info-item svg">
                         <div class="info-label">Válvula</div>
@@ -174,7 +174,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span>Ligado</span>
+                        <span id='valvula'>Ligado</span>
                     </div>
                 </div>
             </div>

@@ -8,16 +8,28 @@ $(document).ready(function() {
             success: function(data) {
                 $('#lista-valores').empty();
                 $.each(data, function(index, value) {
-                    var time = value['time'];
-                    var consumoAgua = value['consumo_agua'];
-                    var motor = value['motor'];
-                    var temperatura = value['temperatura'];
-                    var umidadeAr = value['umidade_ar'];
-                    var umidadeSolo = value['umidade_solo'];
-                    var valvula = value['valvula'];
-                    var vazao = value['vazao'];
+                    let time = value['time'];
+                    let consumoAgua = value['consumo_agua'];
+                    let motor = value['motor'];
+                    let temperatura = value['temperatura'];
+                    let umidadeAr = value['umidade_ar'];
+                    let umidadeSolo = value['umidade_solo'];
+                    let valvula = value['valvula'];
+                    let vazao = value['vazao'];
 
-                    $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
+                    // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
+
+                    const umidadeInput = document.querySelector('#umidade');
+                    const temperaturaInput = document.querySelector('#temperatura');
+                    const vazaoInput = document.querySelector('#vazao');
+                    const motorInput = document.querySelector('#motor');
+                    const valvulaInput = document.querySelector('#valvula');
+
+                    umidadeInput.value = umidadeAr;
+                    temperaturaInput.value = temperatura;
+                    vazaoInput.value = vazao;
+                    motor > 0 ? motorInput.innerText = 'Ligado' : motorInput.innerText = 'Desligado';
+                    valvula > 0 ? valvulaInput.innerText = 'Ligado' : valvulaInput.innerText = 'Desligado';
                 });
             },
             error: function(xhr, status, error) {
