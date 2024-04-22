@@ -7,17 +7,12 @@
     );
     ?>
 
-    
-<div id="valores">
+    <div id="valores">
         <h2>Últimos Valores do InfluxDB</h2>
         <ul id="lista-valores">
             <!-- Os valores serão inseridos aqui -->
         </ul>
     </div>
-    
-    <div id="echarts_grafico_linha" style="width: auto; height: 400px;"></div><br><br>
-
-    <div id="echarts_grafico_barra" style="width: auto; height: 400px;"></div>
 </main>
 <script src="/assets/js/progressBar.js"></script>
 <!-- Inclui a biblioteca ECharts -->
@@ -25,5 +20,4 @@
 <!-- Inclui a biblioteca jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Inclui o arquivo JavaScript externo para a lógica do gráfico -->
-<script src="/assets/js/echart_grafico_linha.js"></script>
-<script src="/assets/js/echart_grafico_barra.js"></script>
+<script src="/assets/js/dispositivos_valor_atual.js"></script>

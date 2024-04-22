@@ -5,8 +5,7 @@ var chart = echarts.init(document.getElementById('echarts_grafico_barra'));
 //function fetchCategory(consultaSelecionada) {
 $.ajax({
     // Substitua pela URL apropriada para o seu back-end
-    //url: '/htdocs/hydroflow/src/controllers/influxdb_query_consumo.php?consulta=',
-    url: 'influxdb_query_consumo.php?consulta=',
+    url: 'influxdb_query_consumo.php',
     type: 'GET',
     dataType: 'json',
     async: false, // Define a solicitação como síncrona

@@ -4,9 +4,8 @@
 $queryApi = $client->createQueryApi();
 
 // Realiza uma consulta no banco de dados InfluxDB
-$result = $queryApi->query('from(bucket: "irrigationIDB") |> range(start: -5m) |> filter(fn: (r) => r["_measurement"] == "irrigacao") 
-|> filter(fn: (r) => r["_field"] == "consumo_agua" or r["_field"] == "motor" or r["_field"] == "temperatura" or r["_field"] == "umidade_ar" or r["_field"] == "umidade_solo" or r["_field"] == "valvula" or r["_field"] == "vazao")
-|> filter(fn: (r) => r["id_area"] == "20") |> filter(fn: (r) => r["id_jardim"] == "6") |> yield(name: "mean")');
+$result = $queryApi->query('from(bucket: "irrigationIDB") 
+    |> range(start: -5m) |> filter(fn: (r) => r["_measurement"] == "irrigacao") |> filter(fn: (r) => r["_field"] == "consumo_agua" or r["_field"] == "motor" or r["_field"] == "temperatura" or r["_field"] == "umidade_ar" or r["_field"] == "umidade_solo" or r["_field"] == "valvula" or r["_field"] == "vazao") |> filter(fn: (r) => r["id_area"] == "20") |> filter(fn: (r) => r["id_jardim"] == "6") |> last()');
 
 // Inicializa um array para armazenar os dados do gráfico
 $echartsData = [];

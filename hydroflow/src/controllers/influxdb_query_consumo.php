@@ -1,17 +1,12 @@
 <?php
 
-// Inclui o arquivo de configuração
-//require '../config/influxdb_conexao.php';
-
-
 // Cria uma instância da API de consulta
 $queryApi = $client->createQueryApi();
 
-//$consultaSelecionada = $_GET['consulta'];
-
 // Realiza uma consulta no banco de dados InfluxDB
-$result = $queryApi->query('from(bucket: "Teste") |> range(start: 2023-01-01, stop: 2023-10-31) |> filter(fn: (r) => r["_measurement"] == "energyconsumptionDB") |> filter(fn: (r) => r["_field"] == "energyConsumption") |> aggregateWindow(every: 1mo, fn: last)');
-
+$result = $queryApi->query('from(bucket: "irrigationIDB") |> range(start: -5m) |> filter(fn: (r) => r["_measurement"] == "irrigacao") 
+|> filter(fn: (r) => r["_field"] == "consumo_agua")
+|> filter(fn: (r) => r["id_area"] == "20") |> filter(fn: (r) => r["id_jardim"] == "6") |> yield(name: "mean")');
 
 // Inicializa um array para armazenar os dados do gráfico
 $echartsData = [];
