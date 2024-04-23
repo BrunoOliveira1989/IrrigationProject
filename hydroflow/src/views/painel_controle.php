@@ -85,33 +85,33 @@
                         <div class="info-label">
                             <span>Úmidade</span>
                         </div>
-                        <div class="progress" role="progressbar">
+                        <div class="progress" role="progressbar" id='umidade'>
                             <div class="progress-inner">
                                 <div class="progress-indicator"></div>
                             </div>
                             <span class="progress-label">
                                 <p><i class="ph-bold ph-drop"></i></p>
-                                <strong>0</strong>
+                                <strong id="umidadeLabel">0</strong>
                                 <span>%</span>
                             </span>
                         </div>
-                        <input type="hidden" min="0" max="50" step="1" id='umidade'>
+                        <input type="hidden" min="0" max="50" step="1">
                     </div>
                     <div class="info-item">
                         <div class="info-label">
                             <span>Temperatura</span>
                         </div>
-                        <div class="progress thermometer" role="progressbar">
+                        <div class="progress thermometer" role="progressbar" id="temperatura">
                             <div class="progress-inner">
                                 <div class="progress-indicator"></div>
                             </div>
                             <span class="progress-label">
                                 <p><i class="ph-bold ph-thermometer"></i></p>
-                                <strong>0</strong>
+                                <strong id="temperaturaLabel">0</strong>
                                 <span>°C</span>
                             </span>
                         </div>
-                        <input id="thermometer" type="hidden" min="0" max="50" step="1" id='temperatura'>
+                        <input id="thermometer" type="hidden" min="0" max="50" step="1" data-value="20">
                     </div>
                     <div class="info-item">
                         <div class="info-label vazao">
@@ -128,13 +128,13 @@
                             </div>
                             <span class="vazao-label">
                                 <p>
-                                    <i class="icon ph-bold ph-wind"></i>
+                                    <i class="icon ph-boldel ph-wind"></i>
                                 </p>
-                                <strong class="vazao">0</strong>
+                                <strong class="vazao" id="vazaoLabel">0</strong>
                                 <span class="unit-vazao">m/s</span>
                             </span>
                         </div>
-                        <input id="vazao" type="hidden" min="0" max="500" step="1" id='vazao'>
+                        <input id="vazao" type="hidden" min="0" max="500" step="1">
                     </div>
                 </div>
                 <div class="info-row">
