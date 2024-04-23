@@ -1,5 +1,7 @@
 <?php
 
+// ini_set("display_errors",0);
+
 $errors = [];
 
 if(isset($_SESSION['message'])) {
@@ -14,7 +16,7 @@ if($exception) {
     ];
 
     if(get_class($exception) === 'ValidationException') {
-        $errors = $exception->getErros();
+        $errors = $exception->getErrors();
     }
 }
 

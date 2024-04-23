@@ -21,6 +21,23 @@ class Dispositivo extends Model {
     private function validar() {
         $errors = [];
 
+        if(!$this->nome_dispositivo) {
+            $errors['nome_dispositivo'] = 'Nome é um campo obrigatório';
+        }
+
+        if(!$this->modelo_dispositivo) {
+            $errors['modelo_dispositivo'] = 'Modelo é um campo obrigatório';
+        }
+
+        if(!$this->id_tipo_dispositivo) {
+            $errors['tipo_dispositivo'] = 'Tipo é um campo obrigatório';
+        }
+
+        if(!$this->id_zona) {
+            $errors['zona'] = 'Zona é um campo obrigatório';
+            $errors['jardim'] = 'Jardim é um campo obrigatório';
+        }
+
         if(count($errors) > 0) {
             throw new ValidationException($errors);
         }
