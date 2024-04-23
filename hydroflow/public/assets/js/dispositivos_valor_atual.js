@@ -26,7 +26,7 @@ $(document).ready(function() {
                     const valvulaInput = document.querySelector('#valvula');
 
                     umidadeInput.value = umidadeAr;
-                    temperaturaInput.value = temperatura;
+                    temperaturaInput.dataset.value = temperatura;
                     vazaoInput.value = vazao;
                     motor > 0 ? motorInput.innerText = 'Ligado' : motorInput.innerText = 'Desligado';
                     valvula > 0 ? valvulaInput.innerText = 'Ligado' : valvulaInput.innerText = 'Desligado';
