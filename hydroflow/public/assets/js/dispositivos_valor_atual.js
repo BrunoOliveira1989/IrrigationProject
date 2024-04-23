@@ -31,14 +31,14 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 $.each(data, function(index, value) {
-                    let time = value['time'];
-                    let consumoAgua = value['consumo_agua'];
-                    let motor = value['motor'];
-                    let temperatura = value['temperatura'];
-                    let umidadeAr = value['umidade_ar'];
-                    let umidadeSolo = value['umidade_solo'];
-                    let valvula = value['valvula'];
-                    let vazao = value['vazao'];
+                    let time = Number(value['time']);
+                    let consumoAgua = Number(value['consumo_agua']);
+                    let motor = Number(value['motor']);
+                    let temperatura = Number(value['temperatura']);
+                    let umidadeAr = Number(value['umidade_ar']);
+                    let umidadeSolo = Number(value['umidade_solo']);
+                    let valvula = Number(value['valvula']);
+                    let vazao = Number(value['vazao']);
 
                     // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
 
