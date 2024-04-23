@@ -1,3 +1,27 @@
+const setUmidade = valor => {
+    const umidade = document.querySelector('#umidade');
+    const umidadeLabel = document.querySelector('#umidadeLabel');
+    valor = valor <= 100 && valor >= 0 ? valor : 0;
+    umidadeLabel.textContent = valor;
+    umidade.style.setProperty('--progress-value', valor);
+    umidade.dataset.value = valor;
+};
+
+const setTemperatura = valor => {
+    const temperatura = document.querySelector('#temperatura');
+    const temperaturaLabel = document.querySelector('#temperaturaLabel');
+    valor = valor <= 100 && valor >= 0 ? valor : 0;
+    temperaturaLabel.textContent = valor;
+    temperatura.style.setProperty('--progress-value', valor);
+    temperatura.dataset.value = valor;
+};
+
+const setVazao = valor => {
+    const vazaoLabel = document.querySelector('#vazaoLabel');
+    valor = valor <= 800 && valor >= 0 ? valor : 0;
+    vazaoLabel.textContent = valor;
+};
+
 $(document).ready(function() {
     // Define a função para atualizar os valores e o gráfico
     function valor_atual() {
@@ -19,6 +43,7 @@ $(document).ready(function() {
 
                     // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
 
+<<<<<<< HEAD
                     const umidadeInput = document.querySelector('#umidade');
                     const temperaturaInput = document.querySelector('#temperatura');
                     const vazaoInput = document.querySelector('#vazao');
@@ -30,6 +55,11 @@ $(document).ready(function() {
                     vazaoInput.value = vazao;
                     motor > 0 ? motorInput.innerText = 'Ligado' : motorInput.innerText = 'Desligado';
                     valvula > 0 ? valvulaInput.innerText = 'Ligado' : valvulaInput.innerText = 'Desligado';
+=======
+                    setUmidade(umidadeAr);
+                    setTemperatura(temperatura);
+                    setVazao(vazao);                    
+>>>>>>> 9377f786e65ec9d381f0905407d248fe382603e2
                 });
             },
             error: function(xhr, status, error) {

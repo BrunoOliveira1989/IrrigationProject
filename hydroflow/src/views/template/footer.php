@@ -4,6 +4,6 @@
 <script src="/assets/js/progressBar.js"></script>
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/select.js"></script>
-<script src="/assets/js/dispositivo_valor_atual.js"></script>
+<script src="/assets/js/dispositivos_valor_atual.js"></script>
 </body>
 </html>
