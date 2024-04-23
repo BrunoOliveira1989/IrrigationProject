@@ -30,7 +30,6 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                $('#lista-valores').empty();
                 $.each(data, function(index, value) {
                     let time = value['time'];
                     let consumoAgua = value['consumo_agua'];
@@ -43,23 +42,9 @@ $(document).ready(function() {
 
                     // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
 
-<<<<<<< HEAD
-                    const umidadeInput = document.querySelector('#umidade');
-                    const temperaturaInput = document.querySelector('#temperatura');
-                    const vazaoInput = document.querySelector('#vazao');
-                    const motorInput = document.querySelector('#motor');
-                    const valvulaInput = document.querySelector('#valvula');
-
-                    umidadeInput.value = umidadeAr;
-                    temperaturaInput.dataset.value = temperatura;
-                    vazaoInput.value = vazao;
-                    motor > 0 ? motorInput.innerText = 'Ligado' : motorInput.innerText = 'Desligado';
-                    valvula > 0 ? valvulaInput.innerText = 'Ligado' : valvulaInput.innerText = 'Desligado';
-=======
                     setUmidade(umidadeAr);
                     setTemperatura(temperatura);
                     setVazao(vazao);                    
->>>>>>> 9377f786e65ec9d381f0905407d248fe382603e2
                 });
             },
             error: function(xhr, status, error) {

@@ -2,7 +2,7 @@ function enviarComandos() {
     // Construir a URL com base nos valores dos campos
     var id_jardim = document.getElementById('id_jardim').value;
     var id_area = document.getElementById('id_area').value;
-    var url = `http://10.0.3.125:1880/irrigacao/comando/${id_jardim}/${id_area}`;
+    var url = `http://192.168.1.10:1880/irrigacao/comando/${id_jardim}/${id_area}`;
 
     // Construir o objeto de dados com as informações do formulário
     var comandos = {
