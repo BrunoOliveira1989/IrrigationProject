@@ -42,9 +42,9 @@ $(document).ready(function() {
 
                     // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
 
-                    setUmidade(umidadeAr);
-                    setTemperatura(temperatura);
-                    setVazao(vazao);                    
+                    setUmidade(umidadeAr.toFixed());
+                    setTemperatura(temperatura.toFixed(1));
+                    setVazao(vazao.toFixed());                    
                 });
             },
             error: function(xhr, status, error) {
