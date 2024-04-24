@@ -145,6 +145,10 @@
     border: 2px solid var(--vermelho);
 }
 
+.input-field:has(.input.invalid) {
+    margin-bottom: 0;
+}
+
 .form-group .input-field .input:focus {
     transform: scale(1.01);
 }
@@ -215,10 +219,10 @@
 
 .invalid-feedback {
     font-family: "Poppins", sans-serif;
-    margin-top: 6px;
+    margin-top: 3px;
     margin-left: 5px;
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 400;
     color: var(--vermelho);
 }
 

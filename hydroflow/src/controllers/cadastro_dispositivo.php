@@ -15,13 +15,15 @@ if(count($_POST) > 0) {
         $_POST = [];
     } catch(Exception $e) {
         $exception = $e;
+    } finally {
+        $dadosCertos = $_POST;
     }
 }
 
 $tipoDispositivos = Dispositivo::getFromOtherTable("tiposdispositivos");
 $jardins = Jardim::get([], 'id, nome_jardim');
 
-loadTemplateView("cadastro_dispositivo", $_POST = [
+loadTemplateView("cadastro_dispositivo", $dadosCertos + [
     'nomeCss' => 'cadastro',
     'exception' => $exception,
     'tipoDispositivos' => $tipoDispositivos,

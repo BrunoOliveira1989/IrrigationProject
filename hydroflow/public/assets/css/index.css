@@ -11,7 +11,8 @@
     --branco: #f1faee;
     --preto: #212121;
     --laranja: #f25c05;
-    --vermelho: #e41749;
+    --vermelho: #ff0040;
+    /* --vermelho: #ff0000; */
 }
 
 *,
@@ -46,7 +47,7 @@ body {
     width: calc(var(--navbar-width-min) - 16px);
 }
 
-.nav-toggle:checked ~ .nav-headerz hr {
+.nav-toggle:checked ~ .nav-header hr {
     left: 8px;
 }
 

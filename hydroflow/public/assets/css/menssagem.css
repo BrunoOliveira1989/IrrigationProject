@@ -18,7 +18,7 @@
 }
 
 .menssagem.alerta {
-    background-color: #e41749;
+    background-color: var(--vermelho);
 }
 
 .menssagem.hidden {
