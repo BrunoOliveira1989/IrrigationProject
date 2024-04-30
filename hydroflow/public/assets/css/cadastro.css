@@ -155,7 +155,6 @@
 
 .form-group .input-field .input::placeholder {
     color: var(--preto);
-    opacity: 0.8;
 }
 
 .main .btn-add {

@@ -326,6 +326,19 @@
   transform: translateX(0);
 }
 
+.info-row:nth-child(2) .info-item:nth-child(3) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out 0.2s;
+}
+
+.control-box.visivel .info-row:nth-child(2) .info-item:nth-child(3) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
 /* Gráficos de Umidade e Temperatura */
 
 .content .progress {
@@ -335,6 +348,10 @@
   --progress-inner-size: calc(var(--progress-size) - 20px);
   border: 5px solid var(--azul-claro);
   filter: drop-shadow(1px 1px 3px rgb(0, 0, 0, 0.5));
+}
+
+.content .progress.solo {
+  border-color: var(--azul);
 }
 
 .content .progress.thermometer {
@@ -414,6 +431,10 @@
   height: var(--progress-indicator-size);
   border-radius: calc(var(--progress-indicator-size) / 2.3);
   transition: all 0.5s ease;
+}
+
+.content .progress.solo .progress-inner .progress-indicator {
+  background-color: var(--azul);
 }
 
 .content .progress.thermometer .progress-inner .progress-indicator {

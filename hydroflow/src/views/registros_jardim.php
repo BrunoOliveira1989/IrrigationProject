@@ -46,7 +46,7 @@
             </div>
             <?php foreach($jardins as $jardim) :?>
             <div class="table-row">
-                <div class="table-cell id"><span class="item"><?= $jardim->id ?></span></div>
+                <div class="table-cell id"><span class="item"><?= str_pad($jardim->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
                 <div class="table-cell"><?= $jardim->nome_jardim ?></div>
                 <div class="table-cell"><?= $jardim->logradouro . " N° " .  $jardim->numero ?></div>
                 <div class="table-cell"><?= $jardim->cep ?></div>

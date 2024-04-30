@@ -1,6 +1,15 @@
-const setUmidade = valor => {
-    const umidade = document.querySelector('#umidade');
-    const umidadeLabel = document.querySelector('#umidadeLabel');
+const setUmidadeAr = valor => {
+    const umidade = document.querySelector('#umidadeAr');
+    const umidadeLabel = document.querySelector('#umidadeArLabel');
+    valor = valor <= 100 && valor >= 0 ? valor : 0;
+    umidadeLabel.textContent = valor;
+    umidade.style.setProperty('--progress-value', valor);
+    umidade.dataset.value = valor;
+};
+
+const setUmidadeSolo = valor => {
+    const umidade = document.querySelector('#umidadeSolo');
+    const umidadeLabel = document.querySelector('#umidadeSoloLabel');
     valor = valor <= 100 && valor >= 0 ? valor : 0;
     umidadeLabel.textContent = valor;
     umidade.style.setProperty('--progress-value', valor);
@@ -42,7 +51,8 @@ $(document).ready(function() {
 
                     // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
 
-                    setUmidade(umidadeAr.toFixed());
+                    setUmidadeSolo(umidadeSolo.toFixed());
+                    setUmidadeAr(umidadeAr.toFixed());
                     setTemperatura(temperatura.toFixed(1));
                     setVazao(vazao.toFixed());                    
                 });

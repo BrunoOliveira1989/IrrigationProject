@@ -51,21 +51,24 @@
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-thermometer"></i>Temperatura</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="controle_temperatura" onchange="enviarComandos();">
+                            <input type="checkbox" class="switch-input" id="controle_temperatura"
+                                onchange="enviarComandos();">
                             <label for="controle_temperatura" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-drop"></i>Umidade</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="controle_umidade" onchange="enviarComandos();">
+                            <input type="checkbox" class="switch-input" id="controle_umidade"
+                                onchange="enviarComandos();">
                             <label for="controle_umidade" class="switch-label"></label>
                         </div>
                     </div>
                     <div class="control-switch">
                         <sapn class="control-label"><i class="icon ph-bold ph-cube-transparent"></i>Volume</sapn>
                         <div class="switch">
-                            <input type="checkbox" class="switch-input" id="controle_consumo" onchange="enviarComandos();">
+                            <input type="checkbox" class="switch-input" id="controle_consumo"
+                                onchange="enviarComandos();">
                             <label for="controle_consumo" class="switch-label"></label>
                         </div>
                     </div>
@@ -83,15 +86,31 @@
                 <div class="info-row">
                     <div class="info-item">
                         <div class="info-label">
-                            <span>Úmidade</span>
+                            <span>Úmidade do solo</span>
                         </div>
-                        <div class="progress" role="progressbar" id='umidade'>
+                        <div class="progress solo" role="progressbar" id='umidadeSolo'>
                             <div class="progress-inner">
                                 <div class="progress-indicator"></div>
                             </div>
                             <span class="progress-label">
                                 <p><i class="ph-bold ph-drop"></i></p>
-                                <strong id="umidadeLabel">0</strong>
+                                <strong id="umidadeSoloLabel">0</strong>
+                                <span>%</span>
+                            </span>
+                        </div>
+                        <input type="hidden" min="0" max="50" step="1">
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span>Úmidade do ar</span>
+                        </div>
+                        <div class="progress" role="progressbar" id='umidadeAr'>
+                            <div class="progress-inner">
+                                <div class="progress-indicator"></div>
+                            </div>
+                            <span class="progress-label">
+                                <p><i class="ph-bold ph-drop"></i></p>
+                                <strong id="umidadeArLabel">0</strong>
                                 <span>%</span>
                             </span>
                         </div>
@@ -113,6 +132,9 @@
                         </div>
                         <input id="thermometer" type="hidden" min="0" max="50" step="1" data-value="20">
                     </div>
+
+                </div>
+                <div class="info-row">
                     <div class="info-item">
                         <div class="info-label vazao">
                             <span>Vazão</span>
@@ -136,8 +158,6 @@
                         </div>
                         <input id="vazao" type="hidden" min="0" max="500" step="1">
                     </div>
-                </div>
-                <div class="info-row">
                     <div class="info-item svg">
                         <div class="info-label">Motor</div>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

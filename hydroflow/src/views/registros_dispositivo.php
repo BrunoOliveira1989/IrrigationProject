@@ -5,6 +5,8 @@
         "Gerencie ou adicione novos dispositivos de irrigação",
         "circuitry"
     );
+
+    include(TEMPLATE_PATH . "/messages.php");
     ?>
     <div class="content">
         <form action="" method="get" class="search">
@@ -49,15 +51,15 @@
                 </div>
             </div>
             <?php foreach($dispositivos as $dispositivo) :?>
-            <div class="table-row">
-                <div class="table-cell id"><span class="item"><?= $dispositivo->id ?></span></div>
+            <a href="cadastro_dispositivo.php?update=<?= $dispositivo->id ?>" class="table-row">
+                <div class="table-cell id"><span class="item"><?= str_pad($dispositivo->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
                 <div class="table-cell"><?= $dispositivo->nome_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->modelo_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->descricao ?></div>
                 <div class="table-cell"><?= $dispositivo->pino_arduino ?></div>
                 <div class="table-cell"><?= $dispositivo->id_tipo_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->id_zona ?></div>
-            </div>
+            </a>
             <?php endforeach ?>
         </div>
         <a href="cadastro_dispositivo.php" class="btn-new"><i class="icon ph-bold ph-plus-circle"></i>Novo</a>
