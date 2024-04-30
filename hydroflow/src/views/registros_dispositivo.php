@@ -23,11 +23,11 @@
             <div class="table-header">
                 <div class="table-cell header id">
                     Código
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="?filtro=id<?= $_GET['filtro'] == 'id' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Nome
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="?filtro=nome_dispositivo<?= $_GET['filtro'] == 'nome_dispositivo' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Modelo
@@ -35,10 +35,6 @@
                 </div>
                 <div class="table-cell header">
                     Tipo
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
-                </div>
-                <div class="table-cell header">
-                    Pino
                     <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
                 </div>
                 <div class="table-cell header">
@@ -55,10 +51,20 @@
                 <div class="table-cell id"><span class="item"><?= str_pad($dispositivo->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
                 <div class="table-cell"><?= $dispositivo->nome_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->modelo_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->descricao ?></div>
-                <div class="table-cell"><?= $dispositivo->pino_arduino ?></div>
                 <div class="table-cell"><?= $dispositivo->id_tipo_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->id_zona ?></div>
+                <div class="table-cell">
+                    <?php foreach ($zonas as $zona) {
+                            foreach($jardins as $jardim){
+                                echo $jardim->id == $zona->id_jardim && $zona->id == $dispositivo->id_zona ? $jardim->nome_jardim : "";
+                            }
+                        }
+                    ?>
+                </div>
+                <div class="table-cell">
+                <?php foreach ($zonas as $zona) : ?>
+                        <?= $zona->id == $dispositivo->id_zona ? "<span class='item'>{$zona->nome_zona}</span>" : "" ?>
+                    <?php endforeach ?>
+                </div>
             </a>
             <?php endforeach ?>
         </div>

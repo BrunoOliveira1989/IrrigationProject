@@ -47,6 +47,18 @@ class Model {
         return $objects;
     }
 
+    public static function getOrderBy($filters = [], $columns = '*', $order_by) {
+        $objects = [];
+        $result = static::getResultSetFromSelectOrderBy($filters, $columns, $order_by);
+        if($result) {
+            $class = get_called_class();
+            while ($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+        return $objects;
+    }
+
     public static function getFromOtherTable($tableName, $filters = [], $columns = '*') {
         $objects = [];
         $result = static::getResultSetFromSelectOtherTable($tableName, $filters, $columns);
@@ -78,6 +90,16 @@ class Model {
     
     public static function getResultSetFromSelect($filters = [], $columns = '*') {
         $sql = "SELECT {$columns} FROM " . static::$tableName . static::getFilters($filters);
+        $result = Database::getResultFromQuery($sql);
+        if($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
+    }
+    
+    public static function getResultSetFromSelectOrderBy($filters = [], $columns = '*', $order_by) {
+        $sql = "SELECT {$columns} FROM " . static::$tableName . static::getFilters($filters) . " ORDER BY " . $order_by;
         $result = Database::getResultFromQuery($sql);
         if($result->num_rows === 0) {
             return null;
