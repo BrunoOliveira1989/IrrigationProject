@@ -19,7 +19,7 @@ if(count($_POST) === 0 && isset($_GET['update'])){
     try {
         $novoDispositivo = new Dispositivo($_POST);
         if($novoDispositivo->id){
-            $novoDispositivo->update();
+            $novoDispositivo->alterar();
             addMsgSucesso("Dispositivo atualizado com sucesso");
             header("Location: registros_dispositivo.php");
             exit();

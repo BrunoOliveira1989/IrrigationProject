@@ -3,7 +3,7 @@
 class Dispositivo extends Model {
     protected static $tableName = "dispositivos";
     protected static $columns = [
-        'id',
+        'id_dispositivo',
         'nome_dispositivo',
         'modelo_dispositivo',
         'descricao',
@@ -12,10 +12,38 @@ class Dispositivo extends Model {
         'id_zona'
     ];
 
+    public static function getTipoDispositivo() {
+        $objects = [];
+        $result = static::getResultTipoDispositivo();
+        if($result) {
+            $class = get_called_class();
+            while ($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+        return $objects;
+    }
+
+    public static function getResultTipoDispositivo(){
+        $sql = 'SELECT * FROM tiposdispositivos';
+        $result = Database::getResultFromQuery($sql);
+        if($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
+    }
+
     public function inserir() {
         $this->validar();
         if(!$this->descricao) $this->descricao = null;
         return parent::insert();
+    }
+
+    public function alterar() {
+        $this->validar();
+        if(!$this->descricao) $this->descricao = null;
+        return parent::update();
     }
 
     private function validar() {

@@ -71,9 +71,9 @@ class Model {
         return $objects;
     }
 
-    public static function getFromInner($tableName, $filters = [], $columns = '*', $inner, $orderBy) {
+    public static function getFromInner($filters = [], $inner = [], $order = "dispositivos.id_dispositivo", $columns = '*') {
         $objects = [];
-        $result = static::consultaComInner($tableName, $filters, $columns, $inner, $orderBy);
+        $result = static::consultaComInner($filters, $inner, $order, $columns);
         if($result) {
             $class = get_called_class();
             while ($row = $result->fetch_assoc()) {
@@ -118,8 +118,14 @@ class Model {
         }
     }
         
-    public static function consultaComInner($tableName, $filters = [], $columns = '*', $inner, $orderBy) {
-        $sql = "SELECT {$columns} FROM {$tableName} " . $inner . static::getFilters($filters) . " ORDER BY {$orderBy}";
+    public static function consultaComInner($filters = [], $inner = [], $order = "dispositivos.id_dispositivo", $columns = '*') {
+        $sql = "SELECT {$columns} FROM " . static::$tableName;
+
+        foreach($inner as $key => $value) {
+            $sql .= " INNER JOIN {$key} ON {$value} ";
+        }
+
+        $sql .= static::getFilters($filters) . " ORDER BY {$order}";
         $result = Database::getResultFromQuery($sql);
         if($result->num_rows === 0) {
             return null;

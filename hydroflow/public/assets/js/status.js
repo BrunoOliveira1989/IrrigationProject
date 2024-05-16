@@ -2,7 +2,7 @@
     let area = document.getElementById("id_area");
     let jardim = document.getElementById("id_jardim");
     let controles = document.querySelector(".control-box");
-    area.addEventListener("change", async function() {
+    area.addEventListener("change", async () => {
       var areaValor = area.value;
       var jardimValor = jardim.value;
       const response = await fetch("status_sistema.php?jardim=" + jardimValor + "&area=" + areaValor);

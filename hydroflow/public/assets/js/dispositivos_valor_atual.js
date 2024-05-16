@@ -31,38 +31,44 @@ const setVazao = valor => {
     vazaoLabel.textContent = valor;
 };
 
-$(document).ready(function() {
-    // Define a função para atualizar os valores e o gráfico
-    function valor_atual() {
-        $.ajax({
-            url: 'influxdb_query_valor_atual.php',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                $.each(data, function(index, value) {
-                    let time = Number(value['time']);
-                    let consumoAgua = Number(value['consumo_agua']);
-                    let motor = Number(value['motor']);
-                    let temperatura = Number(value['temperatura']);
-                    let umidadeAr = Number(value['umidade_ar']);
-                    let umidadeSolo = Number(value['umidade_solo']);
-                    let valvula = Number(value['valvula']);
-                    let vazao = Number(value['vazao']);
+const inputArea = document.querySelector('#id_area');
 
-                    // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
-
-                    setUmidadeSolo(umidadeSolo.toFixed());
-                    setUmidadeAr(umidadeAr.toFixed());
-                    setTemperatura(temperatura.toFixed(1));
-                    setVazao(vazao.toFixed());                    
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error('Erro ao carregar os valores do InfluxDB:', error);
-            }
-        });
-    }
+inputArea.addEventListener('change', () => {
+    const idJardim = document.querySelector('#id_jardim').value;
+    const idArea = inputArea.value;
+    $(document).ready(function() {
+        // Define a função para atualizar os valores e o gráfico
+        function valor_atual() {
+            $.ajax({
+                url: `influxdb_query_valor_atual.php?idjardim=${idJardim}&idArea${idArea}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, value) {
+                        let time = Number(value['time']);
+                        let consumoAgua = Number(value['consumo_agua']);
+                        let motor = Number(value['motor']);
+                        let temperatura = Number(value['temperatura']);
+                        let umidadeAr = Number(value['umidade_ar']);
+                        let umidadeSolo = Number(value['umidade_solo']);
+                        let valvula = Number(value['valvula']);
+                        let vazao = Number(value['vazao']);
     
-    // Chama a função valor_atual() a cada segundo (1000 milissegundos)
-    setInterval(valor_atual, 1000);
+                        // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
+    
+                        setUmidadeSolo(umidadeSolo.toFixed());
+                        setUmidadeAr(umidadeAr.toFixed());
+                        setTemperatura(temperatura.toFixed(1));
+                        setVazao(vazao.toFixed());                    
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao carregar os valores do InfluxDB:', error);
+                }
+            });
+        }
+        
+        // Chama a função valor_atual() a cada segundo (1000 milissegundos)
+        setInterval(valor_atual, 1000);
+    });
 });

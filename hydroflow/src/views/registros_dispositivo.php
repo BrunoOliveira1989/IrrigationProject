@@ -23,47 +23,44 @@
             <div class="table-header">
                 <div class="table-cell header id">
                     Código
-                    <a href="?filtro=id<?= $_GET['filtro'] == 'id' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
+                    <a href="?filtro=dispositivos.id_dispositivo<?= $_GET['filtro'] == 'dispositivos.id_dispositivo' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Nome
-                    <a href="?filtro=nome_dispositivo<?= $_GET['filtro'] == 'nome_dispositivo' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
+                    <a href="?filtro=dispositivos.nome_dispositivo<?= $_GET['filtro'] == 'dispositivos.nome_dispositivo' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Modelo
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="?filtro=dispositivos.modelo_dispositivo<?= $_GET['filtro'] == 'dispositivos.modelo_dispositivo' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Tipo
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Jardim
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="?filtro=jardins.nome_jardim<?= $_GET['filtro'] == 'jardins.nome_jardim' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
                 <div class="table-cell header">
                     Área
-                    <button class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></button>
+                    <a href="?filtro=zonas.nome_zona<?= $_GET['filtro'] == 'zonas.nome_zona' ? $_GET['ordem'] ? '' : '&ordem=DESC' : '' ?>" class="sort-btn"><i class="ph-bold ph-arrows-down-up"></i></a>
                 </div>
             </div>
             <?php foreach($dispositivos as $dispositivo) :?>
-            <a href="cadastro_dispositivo.php?update=<?= $dispositivo->id ?>" class="table-row">
-                <div class="table-cell id"><span class="item"><?= str_pad($dispositivo->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
+            <a href="cadastro_dispositivo.php?update=<?= $dispositivo->id_dispositivo ?>" class="table-row">
+                <div class="table-cell id"><span class="item"><?= str_pad($dispositivo->id_dispositivo, 4, '0' , STR_PAD_LEFT) ?></span></div>
                 <div class="table-cell"><?= $dispositivo->nome_dispositivo ?></div>
                 <div class="table-cell"><?= $dispositivo->modelo_dispositivo ?></div>
-                <div class="table-cell"><?= $dispositivo->id_tipo_dispositivo ?></div>
+                <div class="table-cell" aria-label="">
+                        <?php foreach($tipo_dispositivos as $tipo_dispositivo) :?>
+                            <?= $tipo_dispositivo->id == $dispositivo->id_tipo_dispositivo ? $tipo_dispositivo->nome_tipo_dispositivo : '' ?>
+                        <?php endforeach ?>
+                    </div>
                 <div class="table-cell">
-                    <?php foreach ($zonas as $zona) {
-                            foreach($jardins as $jardim){
-                                echo $jardim->id == $zona->id_jardim && $zona->id == $dispositivo->id_zona ? $jardim->nome_jardim : "";
-                            }
-                        }
-                    ?>
+                    <?= $dispositivo->nome_jardim ?>
                 </div>
                 <div class="table-cell">
-                <?php foreach ($zonas as $zona) : ?>
-                        <?= $zona->id == $dispositivo->id_zona ? "<span class='item'>{$zona->nome_zona}</span>" : "" ?>
-                    <?php endforeach ?>
+                    <span class="item"><?= $dispositivo->nome_zona ?></span>
                 </div>
             </a>
             <?php endforeach ?>

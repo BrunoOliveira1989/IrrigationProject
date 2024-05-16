@@ -10,7 +10,7 @@
         <div class="form-group">
             <div class="input-field flex-5">
                 <label for="id_jardim">Jardim</label>
-                <select class="input" name="jardim" id="id_jardim" class="input">
+                <select class="input" name="jardim" id="id_jardim">
                     <option value="" selected>Selecione um Jardim...</option>
                     <?php foreach ($jardins as $jardim): ?>
                         <option value="<?= $jardim->id ?>"><?= $jardim->nome_jardim ?></option>
