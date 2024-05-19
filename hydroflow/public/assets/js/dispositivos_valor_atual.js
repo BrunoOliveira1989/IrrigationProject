@@ -31,8 +31,8 @@ const setVazao = valor => {
     vazaoLabel.textContent = valor;
 };
 
-const inputMotor = document.querySelector("#motor");
-const inputValv = document.querySelector("#valvula");
+const inputMotor = document.querySelector('#motor_status');
+const inputValv = document.querySelector('#valvula_status');
 const inputArea = document.querySelector('#id_area');
 var interval;
 
@@ -64,6 +64,7 @@ inputArea.addEventListener('change', () => {
                         setVazao(vazao.toFixed());
                         console.log(motor)
                         motor > 0 ?  inputMotor.innerText = 'Ligado' : inputMotor.innerText = 'Desligado';
+                        valvula > 0 ?  inputValv.innerText = 'Ligado' : inputValv.innerText = 'Desligado';
                     });
                 },
                 error: function(xhr, status, error) {

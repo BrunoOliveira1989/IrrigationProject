@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="control-switch">
-                        <sapn class="control-label"><i class="icon ph-bold ph-funnel"></i>Valvula</sapn>
+                        <sapn class="control-label"><i class="icon ph-bold ph-funnel"></i>Válvula</sapn>
                         <div class="switch">
                             <input type="checkbox" class="switch-input" id="valvula" onchange="enviarComandos();">
                             <label for="valvula" class="switch-label"></label>
@@ -177,7 +177,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span id='motor'>Ligado</span>
+                        <span id='motor_status'>Ligado</span>
                     </div>
                     <div class="info-item svg">
                         <div class="info-label">Válvula</div>
@@ -194,7 +194,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span id='valvula'>Ligado</span>
+                        <span id='valvula_status'>Ligado</span>
                     </div>
                 </div>
             </div>
