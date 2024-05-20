@@ -40,10 +40,11 @@ inputArea.addEventListener('change', () => {
         // Define a função para atualizar os valores e o gráfico
         function valor_atual() {
             $.ajax({
-                url: `influxdb_query_valor_atual.php?idjardim=${idJardim}&idArea${idArea}`,
+                url: `influxdb_query_valor_atual.php?idJardim=${idJardim}&idArea${idArea}`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
+                    alert(data);
                     $.each(data, function(index, value) {
                         let time = Number(value['time']);
                         let consumoAgua = Number(value['consumo_agua']);

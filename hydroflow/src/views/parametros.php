@@ -31,7 +31,7 @@
                 <div class="coluna-1">
                     <div class="form-group">
                         <div class="input-field">
-                            <label for="horario_inicio">Hora de início</label>
+                            <label for="hora_inicio">Hora de início</label>
                             <input type="time" class="input" name="hora_inicio" id="horario_inicio">
                         </div>
                         <div class="input-field">
