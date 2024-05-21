@@ -9,7 +9,7 @@
         include(TEMPLATE_PATH . "/messages.php")
     ?>
     <div class="content">
-        <form action="#" method="post"class="register" id="register">
+        <form action="#" method="post" class="register" id="register">
             <div class="form-group">
                 <div class="input-field flex-10">
                     <label for="id_jardim">Jardim</label>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="input-field">
                             <label for="hora_inicio">Hora de início</label>
-                            <input type="time" class="input" name="hora_inicio" id="horario_inicio">
+                            <input type="time" class="input" name="hora_inicio" id="hora_inicio">
                         </div>
                         <div class="input-field">
                             <label for="duracao">Duração (min)</label>
@@ -73,31 +73,31 @@
                 <div class="coluna-2">
                     <div class="form-group checkbox">
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="segunda" id="segunda">
+                            <input type="checkbox" class="input checkbox" name="segunda" id="segunda" checked>
                             <label for="segunda">Segunda-feira</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="terca" id="terca">
+                            <input type="checkbox" class="input checkbox" name="terca" id="terca" checked>
                             <label for="terca">Terça-feira</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="quarta" id="quarta">
+                            <input type="checkbox" class="input checkbox" name="quarta" id="quarta" checked>
                             <label for="quarta">Quarta-feira</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="quinta" id="quinta">
+                            <input type="checkbox" class="input checkbox" name="quinta" id="quinta" checked>
                             <label for="quinta">Quinta-feira</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="sexta" id="sexta">
+                            <input type="checkbox" class="input checkbox" name="sexta" id="sexta" checked>
                             <label for="sexta">Sexta-feira</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="sabado" id="sabado">
+                            <input type="checkbox" class="input checkbox" name="sabado" id="sabado" checked>
                             <label for="sabado">Sábado</label>
                         </div>
                         <div class="input-field">
-                            <input type="checkbox" class="input checkbox" name="domingo" id="domingo">
+                            <input type="checkbox" class="input checkbox" name="domingo" id="domingo" checked>
                             <label for="domingo">Domingo</label>
                         </div>
                     </div>

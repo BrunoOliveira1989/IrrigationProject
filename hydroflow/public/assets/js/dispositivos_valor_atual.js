@@ -31,16 +31,20 @@ const setVazao = valor => {
     vazaoLabel.textContent = valor;
 };
 
+const inputMotor = document.querySelector('#motor_status');
+const inputValv = document.querySelector('#valvula_status');
 const inputArea = document.querySelector('#id_area');
+var interval;
 
 inputArea.addEventListener('change', () => {
     const idJardim = document.querySelector('#id_jardim').value;
-    const idArea = inputArea.value;
+    const idArea = document.querySelector('#id_area').value;
+    clearInterval(interval);
     $(document).ready(function() {
         // Define a função para atualizar os valores e o gráfico
         function valor_atual() {
             $.ajax({
-                url: `influxdb_query_valor_atual.php?idJardim=${idJardim}&idArea${idArea}`,
+                url: `influxdb_query_valor_atual.php?idJardim=${idJardim}&idArea=${idArea}`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -54,13 +58,13 @@ inputArea.addEventListener('change', () => {
                         let umidadeSolo = Number(value['umidade_solo']);
                         let valvula = Number(value['valvula']);
                         let vazao = Number(value['vazao']);
-    
-                        // $('#lista-valores').append('<li><strong>' + time + '</strong>: ' + consumoAgua + ' (consumo de água), ' + motor + ' (motor), ' + temperatura + ' (temperatura), ' + umidadeAr + ' (umidade do ar), ' + umidadeSolo + ' (umidade do solo), ' + valvula + ' (válvula), ' + vazao + ' (vazão)</li>');
-    
+
                         setUmidadeSolo(umidadeSolo.toFixed());
                         setUmidadeAr(umidadeAr.toFixed());
                         setTemperatura(temperatura.toFixed(1));
-                        setVazao(vazao.toFixed());                    
+                        setVazao(vazao.toFixed());
+                        motor > 0 ?  inputMotor.innerText = 'Ligado' : inputMotor.innerText = 'Desligado';
+                        valvula > 0 ?  inputValv.innerText = 'Ligado' : inputValv.innerText = 'Desligado';
                     });
                 },
                 error: function(xhr, status, error) {
@@ -70,6 +74,6 @@ inputArea.addEventListener('change', () => {
         }
         
         // Chama a função valor_atual() a cada segundo (1000 milissegundos)
-        setInterval(valor_atual, 1000);
+        interval = setInterval(valor_atual, 1000);
     });
 });

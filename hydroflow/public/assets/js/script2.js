@@ -27,37 +27,63 @@ function enviarComandos() {
     });
 }
 
-document.getElementById("formulario").addEventListener("submit", function(event) {
+document.getElementById("register").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita o comportamento padrão de enviar o formulário
 
     // Construir a URL com base nos valores dos campos
     var id_jardim = document.getElementById('id_jardim').value;
     var id_area = document.getElementById('id_area').value;
-    var url = `http://10.0.3.125:1880/irrigacao/parametro/${id_jardim}/${id_area}`;
+    var url = `http://192.168.1.10:1880/irrigacao/parametro/${id_jardim}/${id_area}`;
+    let reload;
 
     // Construir o objeto de dados com as informações do formulário
     var jsonData = {
-        descricao: "Parâmetros do Sistema",
+        // descricao: "Parâmetros do Sistema",
         id_jardim: document.getElementById('id_jardim').value,
         id_area: document.getElementById('id_area').value,
-        horario_inicio: document.getElementById('horario_inicio').value,
+        hora_inicio: document.getElementById('hora_inicio').value,
         duracao: document.getElementById('duracao').value,
-        dias_semana: document.getElementById('dias_semana').value,
-        setpoint_umidade: document.getElementById('setpointUmidade').value,
-        limite_superior_umidade: document.getElementById('max_umidade').value,
-        limite_inferior_umidade: document.getElementById('min_umidade').value,
-        limite_superior_temperatura: document.getElementById('max_temperatura').value,
-        limite_inferior_temperatura: document.getElementById('min_temperatura').value,
-        id_tipo_planta: document.getElementById('idTipoPlanta').value,
-        id_tipo_irrigacao: document.getElementById('id_tipo_irrigacao').value
+        max_umidade: document.getElementById('max_umidade').value,
+        min_umidade: document.getElementById('min_umidade').value,
+        max_temperatura: document.getElementById('max_temperatura').value,
+        min_temperatura: document.getElementById('min_temperatura').value,
+        max_volume: document.getElementById('max_volume').value,
+        min_volume: document.getElementById('min_volume').value,
+        segunda: document.getElementById('segunda').checked,
+        terca: document.getElementById('terca').checked,
+        quarta: document.getElementById('quarta').checked,
+        quinta: document.getElementById('quinta').checked,
+        sexta: document.getElementById('sexta').checked,
+        sabado: document.getElementById('sabado').checked,
+        domingo: document.getElementById('domingo').checked,
     };
 
-    // Enviar os dados do formulário via fetch com método PUT
-    fetch(url, {
-        method: "PUT",
+    fetch('gravar_parametros.php', {
+        method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type" : "application/json"
         },
         body: JSON.stringify(jsonData)
-    });
+    }).then(res => {
+        res.json().then(function(data) {
+            if(data['success'] == true) return true;
+        }).then(
+            response => {
+                    // Enviar os dados do formulário via fetch com método PUT
+                    fetch(url, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(jsonData)
+                    })
+                    .then(() => {
+                        window.location.reload(false);
+                    })
+                    .catch(() => {
+                        alert('erro ao gravar no dispositivo')
+                    });
+            }
+        );
+    })
 });

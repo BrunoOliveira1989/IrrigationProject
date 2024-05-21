@@ -1,31 +1,38 @@
 <?php
 
-class Parametros extends Model {
+class Parametro extends Model {
 
     protected static $tableName = "parametrosirrigacoes";
     protected static $columns = [
-        'id_parametro',
+        'id_parametros',
+        'id_area',
+        'id_jardim',
         'hora_inicio',
         'duracao',
-        'dias_semana',
-        'set_point_umidade',
         'max_umidade',
         'min_umidade',
         'max_temperatura',
         'min_temperatura',
         'max_volume',
         'min_volume',
-        'domingo',
         'segunda',
         'terca',
         'quarta',
         'quinta',
         'sexta',
         'sabado',
+        'domingo'
     ];
 
     public function inserir() {
-        $this->validar();
+        // $this->validar();
+        $this->segunda === true ? 1 : 0;
+        $this->terca === true ? 1 : 0;
+        $this->quarta === true ? 1 : 0;
+        $this->quinta === true ? 1 : 0;
+        $this->sexta === true ? 1 : 0;
+        $this->sabado === true ? 1 : 0;
+        $this->domingo === true ? 1 : 0;
         return parent::insert();
     }
 
