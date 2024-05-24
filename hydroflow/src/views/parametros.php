@@ -9,6 +9,26 @@
         include(TEMPLATE_PATH . "/messages.php")
     ?>
     <div class="content">
+        <dialog class="modal" id="confirm-modal">
+            <div class="modal-container">
+                <button class="btn-close" id="close"><i class="ph-bold ph-x-circle"></i></button>
+                <h2>Deseja carregar os parâmetros no dispositivo?</h2>
+                <div class="btn-box">
+                    <button class="btn-register" id="modal-carregar">Carregar</button>
+                    <button class="btn-register gravar" id="modal-salvar">Apenas salvar</button>
+                </div>
+            </div>
+        </dialog>
+        <dialog class="modal" id="success-modal">
+            <div class="modal-container">
+                <div class="loader-bar"></div>
+            </div>
+        </dialog>
+        <dialog class="modal" id="error-modal">
+            <div class="modal-container">
+                <div class="loader-bar"></div>
+            </div>
+        </dialog>
         <form action="#" method="post" class="register" id="register">
             <div class="form-group">
                 <div class="input-field flex-10">

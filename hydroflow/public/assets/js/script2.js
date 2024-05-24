@@ -27,6 +27,20 @@ function enviarComandos() {
     });
 }
 
+function getMessage(message) {
+    let tag = document.createElement('h2');
+    tag.innerText = message;
+    return tag;
+}
+
+const modal = document.querySelector("#confirm-modal");
+const successModal = document.querySelector("#success-modal");
+const errorModal = document.querySelector("#error-modal");
+
+document.querySelector("#confirm-modal #close").addEventListener('click', () => {
+    modal.close();
+})
+
 document.getElementById("register").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita o comportamento padrão de enviar o formulário
 
@@ -64,26 +78,60 @@ document.getElementById("register").addEventListener("submit", function(event) {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(jsonData)
-    }).then(res => {
-        res.json().then(function(data) {
-            if(data['success'] == true) return true;
-        }).then(
-            response => {
-                    // Enviar os dados do formulário via fetch com método PUT
-                    fetch(url, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(jsonData)
-                    })
-                    .then(() => {
-                        window.location.reload(false);
-                    })
-                    .catch(() => {
-                        alert('erro ao gravar no dispositivo')
-                    });
-            }
-        );
     })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error('Erro HTTP:' + response.status);
+        }
+        return response.json()
+    })
+    .then(function(data) {
+        if(!data.success) throw new Error(data.message || 'Erro na inserção');
+        modal.showModal();
+        return new Promise((resolve, reject) => {
+            const modalCarregar = document.querySelector("#modal-carregar");
+            const modalSalvar = document.querySelector("#modal-salvar");
+
+            modalCarregar.addEventListener('click', () => {
+                modal.close();
+                resolve('carregar');
+            })
+
+            modalSalvar.addEventListener('click', () => {
+                modal.close();
+                reject('salvar');
+            })
+        })
+        return data;
+    })
+    .then(choice => {
+        if(choice === 'carregar') {
+            // Enviar os dados do formulário via fetch com método PUT
+            fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(() => {
+                window.location.reload(false);
+            })
+            .catch(() => {
+                alert('erro ao gravar no dispositivo')
+            });
+        }
+    })
+    .catch(reason => {
+        if(reason === 'salvar') {
+            modal.close();
+            successModal.appendChild(getMessage('Dados salvos com sucesso'));
+            setTimeout(() => successModal.showModal(), 1000);
+            setTimeout(() => successModal.close(), 4000);
+        } else {
+            errorModal.appendChild(getMessage(reason.message));
+            errorModal.showModal();
+            setTimeout(() => errorModal.close(), 3000);
+        }
+    });
 });

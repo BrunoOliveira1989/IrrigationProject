@@ -25,7 +25,7 @@ class Parametro extends Model {
     ];
 
     public function inserir() {
-        // $this->validar();
+        $this->validar();
         $this->segunda === true ? 1 : 0;
         $this->terca === true ? 1 : 0;
         $this->quarta === true ? 1 : 0;
