@@ -24,6 +24,8 @@ bool estado_flip = false;
 const unsigned long tempo_ligado = 1000;  // Tempo ligado em milissegundos (ajustar conforme necessário)
 const unsigned long tempo_desligado = 1000;  // Tempo desligado em milissegundos (ajustar conforme necessário)
 
+unsigned long tempo_ligado_acumulado = 0;  // Tempo total ligado em milissegundos
+
 void setup() {
   Serial.begin(115200);   // Inicia a comunicação serial com a velocidade de 115200 bps
   connectWiFi();          // Inicia a conexão WiFi
@@ -42,6 +44,10 @@ void loop() {
     reconnect();  // Reconecta ao servidor MQTT, se não estiver conectado
   }
   client.loop();  // Mantém a conexão MQTT ativa
+
+  // Exibe o tempo total ligado em minutos no monitor serial
+  Serial.print("Tempo ligado em minutos: ");
+  Serial.println(tempo_ligado_em_minutos());
 
   // Realiza leituras dos sensores
   /*dispositivo.temperatura = dht.readTemperature();
@@ -86,6 +92,11 @@ bool hora_ideal() {
   return hora_atual > 6 && hora_atual < 20;
 }
 
+// Função para retornar o tempo total ligado em minutos
+unsigned long tempo_ligado_em_minutos() {
+  return tempo_ligado_acumulado / 60000;  // Convertendo milissegundos para minutos
+}
+
 // Função para verificar se a temperatura está dentro dos limites ideais
 bool temperatura_ideal() {
   return dispositivo.temperatura >= parametro.limite_iniciar_temperatura && dispositivo.temperatura <= parametro.limite_parar_temperatura;
@@ -100,6 +111,7 @@ bool umidade_solo_ideal() {
 bool consumo_ideal() {
   return dispositivo.consumo_agua <= parametro.limite_maximo_consumo;
 }
+
 
 // Função para alternar o estado com tempos específicos de ligado e desligado
 bool flip(unsigned long tempo_ligado, unsigned long tempo_desligado) {
@@ -119,6 +131,9 @@ bool controlar_irrigacao() {
   bool temperatura;
   bool umidade;
   bool consumo;
+  bool irrigacao_ativa;
+  static unsigned long ultimo_tempo_verificacao = 0;
+  unsigned long tempo_atual = millis();
 
   if (comando.controle_temperatura) {
     temperatura = temperatura_ideal();
@@ -137,14 +152,24 @@ bool controlar_irrigacao() {
   } else {
     consumo = 1;
   }
+
+  
   if (comando.controle_umidade) {
-    return  hora && umidade && temperatura && consumo;
+    irrigacao_ativa = hora && umidade && temperatura && consumo;
   } else if (comando.controle_temperatura || comando.controle_consumo) {
     bool irrigacao_intermitente = flip(tempo_ligado, tempo_desligado);
-    return hora && umidade && temperatura && consumo && irrigacao_intermitente;  
+    irrigacao_ativa = hora && umidade && temperatura && consumo && irrigacao_intermitente;  
   } else {
-  return false;
+    irrigacao_ativa = false;
   }
+
+  // Acumula o tempo ligado sempre que a irrigação está ativa
+  if (irrigacao_ativa) {
+    tempo_ligado_acumulado += (tempo_atual - ultimo_tempo_verificacao);
+  }
+  ultimo_tempo_verificacao = tempo_atual;
+
+  return irrigacao_ativa;
 }
 
 /*
