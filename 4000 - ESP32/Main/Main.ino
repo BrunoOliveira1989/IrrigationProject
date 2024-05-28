@@ -19,6 +19,11 @@ unsigned long lastSensorsSending = 0;  // Último envio de leituras dos sensores
 unsigned long lastStatusSending = 0;    // Último envio do status do sistema
 unsigned long lastSensorTimer = 1000;          // Último intervalo de envio de leituras dos sensores
 
+unsigned long ultimo_tempo_flip = 0;
+bool estado_flip = false;
+const unsigned long tempo_ligado = 1000;  // Tempo ligado em milissegundos (ajustar conforme necessário)
+const unsigned long tempo_desligado = 1000;  // Tempo desligado em milissegundos (ajustar conforme necessário)
+
 void setup() {
   Serial.begin(115200);   // Inicia a comunicação serial com a velocidade de 115200 bps
   connectWiFi();          // Inicia a conexão WiFi
@@ -75,6 +80,74 @@ void loop() {
   }  
 }
 
+// Função para verificar se a hora atual está dentro do intervalo ideal
+bool hora_ideal() {
+  int hora_atual = hour();  // Obtém a hora atual
+  return hora_atual > 6 && hora_atual < 20;
+}
+
+// Função para verificar se a temperatura está dentro dos limites ideais
+bool temperatura_ideal() {
+  return dispositivo.temperatura >= parametro.limite_iniciar_temperatura && dispositivo.temperatura <= parametro.limite_parar_temperatura;
+}
+
+// Função para verificar se a umidade do solo está dentro dos limites ideais
+bool umidade_solo_ideal() {
+  return dispositivo.umidade_solo <= parametro.limite_iniciar_umidade;
+}
+
+// Função para verificar se o consumo de água está dentro do limite ideal
+bool consumo_ideal() {
+  return dispositivo.consumo_agua <= parametro.limite_maximo_consumo;
+}
+
+// Função para alternar o estado com tempos específicos de ligado e desligado
+bool flip(unsigned long tempo_ligado, unsigned long tempo_desligado) {
+  unsigned long tempo_atual = millis();
+  if (estado_flip && (tempo_atual - ultimo_tempo_flip >= tempo_ligado)) {
+    estado_flip = false;
+    ultimo_tempo_flip = tempo_atual;
+  } else if (!estado_flip && (tempo_atual - ultimo_tempo_flip >= tempo_desligado)) {
+    estado_flip = true;
+    ultimo_tempo_flip = tempo_atual;
+  }
+  return estado_flip;
+}
+
+bool controlar_irrigacao() {
+  bool hora = hora_ideal();
+  bool temperatura;
+  bool umidade;
+  bool consumo;
+
+  if (comando.controle_temperatura) {
+    temperatura = temperatura_ideal();
+  } else {
+    temperatura = 1;
+  }
+
+  if (comando.controle_umidade) {
+    umidade = umidade_solo_ideal();
+  } else {
+    umidade = 1;
+  }
+
+  if (comando.controle_consumo) { 
+    consumo = consumo_ideal();
+  } else {
+    consumo = 1;
+  }
+  if (comando.controle_umidade) {
+    return  hora && umidade && temperatura && consumo;
+  } else if (comando.controle_temperatura || comando.controle_consumo) {
+    bool irrigacao_intermitente = flip(tempo_ligado, tempo_desligado);
+    return hora && umidade && temperatura && consumo && irrigacao_intermitente;  
+  } else {
+  return false;
+  }
+}
+
+/*
 // Função para verificar as condições ideais para irrigação
 bool controlar_irrigacao() {
   int hora_atual = hour();  // Obtém a hora atual
@@ -98,7 +171,7 @@ bool controlar_irrigacao() {
 
   // Retorna verdadeiro se todas as condições ideais forem atendidas
   return hora_ideal && temperatura_ideal && umidade_ar_ideal && umidade_solo_ideal;
-}
+}*/
 
 // Função para controlar a válvula
 void controlar_valvula(bool ligada) {
