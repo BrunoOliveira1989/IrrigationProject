@@ -10,6 +10,18 @@ struct Parametro {
   float limite_parar_temperatura;
   float limite_minimo_consumo;
   float limite_maximo_consumo;
+  int hora_inicio;
+  int hora_fim;
+  int minuto_inicio;
+  int minuto_fim;
+  unsigned long duracao;
+  bool segunda;
+  bool terca;
+  bool quarta;
+  bool quinta;
+  bool sexta;
+  bool sabado;
+  bool domingo;
 };
 
 struct Dispositivo {

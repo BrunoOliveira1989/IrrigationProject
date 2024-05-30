@@ -1,5 +1,5 @@
 // Configurações da rede MQTT
-const char* mqtt_server = "172.20.10.5";  // Endereço do servidor MQTT
+const char* mqtt_server = "192.168.254.102";  // Endereço do servidor MQTT
 const int mqtt_port = 1883;                 // Porta do servidor MQTT
 
 void setupMqtt() {
@@ -53,12 +53,22 @@ void processarDadosJSON(byte* payload, char* topic) {
 
   // Processa mensagens de parâmetros
   if (strcmp(topic, AWS_IOT_SUBSCRIBE_PARAMETRO) == 0) {
-    parametro.limite_iniciar_umidade = doc["limite_iniciar_umidade"];
-    parametro.limite_parar_umidade = doc["limite_parar_umidade"];
-    parametro.limite_iniciar_temperatura = doc["limite_iniciar_temperatura"];
-    parametro.limite_parar_temperatura = doc["limite_parar_temperatura"];
-    parametro.limite_minimo_consumo = doc["limite_minimo_consumo"];
-    parametro.limite_maximo_consumo = doc["limite_maximo_consumo"];
+    parametro.limite_iniciar_umidade = doc["min_umidade"];
+    parametro.limite_parar_umidade = doc["max_umidade"];
+    parametro.limite_iniciar_temperatura = doc["min_temperatura"];
+    parametro.limite_parar_temperatura = doc["max_temperatura"];
+    parametro.limite_minimo_consumo = doc["min_volume"];
+    parametro.limite_maximo_consumo = doc["max_volume"];
+    separarHoraMinuto(doc["hora_inicio"],parametro.hora_inicio,parametro.minuto_inicio);
+    separarHoraMinuto(doc["duracao"],parametro.hora_fim,parametro.minuto_fim);
+    parametro.duracao = 360;
+    parametro.segunda = doc["segunda"];
+    parametro.terca = doc["terca"];
+    parametro.quarta = doc["quarta"];
+    parametro.quinta = doc["quinta"];
+    parametro.sexta = doc["sexta"];
+    parametro.sabado = doc["sabado "];
+    parametro.domingo = doc["domingo"];
   }
 
   // Processa mensagens de comandos
