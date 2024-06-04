@@ -10,8 +10,13 @@ loadModel("Parametro");
 if(count($dados) > 0) {
     try {
         $novoParametro = new Parametro($dados);
-        $novoParametro->inserir();
-        $response = ["success" => true];
+        if($novoParametro->id_parametros){
+            $novoParametro->alterar();
+            $response = ["success" => true];
+        } else {
+            $novoParametro->inserir();
+            $response = ["success" => true];
+        }
     } catch(Exception $e) {
         $exception = $e;
         $response = ["success" => false, "erros" => $exception];

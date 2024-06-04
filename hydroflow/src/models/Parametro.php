@@ -25,20 +25,23 @@ class Parametro extends Model {
     ];
 
     public function inserir() {
-        $this->validar();
-        $this->segunda === true ? 1 : 0;
-        $this->terca === true ? 1 : 0;
-        $this->quarta === true ? 1 : 0;
-        $this->quinta === true ? 1 : 0;
-        $this->sexta === true ? 1 : 0;
-        $this->sabado === true ? 1 : 0;
-        $this->domingo === true ? 1 : 0;
+        // $this->validar();
         return parent::insert();
     }
 
     public function alterar() {
-        $this->validar();
-        return parent::update();
+        // $this->validar();
+        return self::updateParametro();
+    }
+
+    public function updateParametro() {
+        $sql = "UPDATE " . static::$tableName . " SET ";
+        foreach(static::$columns as $col) {
+            $sql .= " {$col} = " . static::getFormatedValueParametro($this->$col) . ",";
+        }
+        $sql[strlen($sql) - 1] = " ";
+        $sql .= "WHERE id_parametros = {$this->id_parametros}";
+        Database::executeSQL($sql);
     }
 
     private function validar() {
@@ -90,6 +93,16 @@ class Parametro extends Model {
 
         if(count($errors) > 0) {
             throw new ValidationException($errors);
+        }
+    }
+
+    private static function getFormatedValueParametro($value) {
+        if(is_null($value)) {
+            return "null";
+        } elseif(gettype($value) == "string") {
+            return "'{$value}'";
+        } else {
+            return $value;
         }
     }
 }
