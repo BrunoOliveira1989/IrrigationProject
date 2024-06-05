@@ -5,6 +5,8 @@
         "Gerencie ou adicione novos jardins e suas zonas",
         "potted-plant"
     );
+    
+    include (TEMPLATE_PATH . "/messages.php")
     ?>
     <div class="content">
         <form action="" method="get" class="search">

@@ -83,13 +83,16 @@
                         rows="10"><?= $descricao_zona ?></textarea>
                 </div>
             </div>
-            <div class="btn-box">
-                <button type="submit" form="register" class="btn-register">
-                    <i class="ph-bold ph-check-fat"></i>Atualizar
-                </button>
-                <a href="alterar_jardim.php?update=<?= $id_jardim ?>" class="btn-register cancel">
-                    <i class="ph-bold ph-x"></i>Cancelar
-                </a>
+            <div class="container-buttons">
+                <div class="btn-box">
+                    <button type="submit" form="register" class="btn-register">
+                        <i class="ph-bold ph-check-fat"></i>Atualizar
+                    </button>
+                    <a href="alterar_jardim.php?update=<?= $id_jardim ?>" class="btn-register cancel">
+                        <i class="ph-bold ph-x"></i>Cancelar
+                    </a>
+                </div>
+                <a href="?delete=<?= $id ?>&jardim=<?= $id_jardim ?>" class="btn-register trash"><i class="ph-bold ph-trash"></i></a>
             </div>
         </form>
     </div>

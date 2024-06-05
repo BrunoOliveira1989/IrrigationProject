@@ -8,7 +8,17 @@ loadModel("Zona");
 $exception = null;
 $dados = [];
 
-if(count($_POST) === 0 && isset($_GET['update'])){
+if(isset($_GET['delete']) && isset($_GET['jardim'])){
+    try {
+        Zona::deleteById($_GET['delete']);
+        addMsgSucesso('Zona foi excluida com sucesso');
+        header("Location: alterar_jardim.php?update={$_GET['jardim']}");
+        exit();
+    } catch (Exception $e) {
+        $exception = $e;
+        addErrorMsg('Não foi possível excluir a zona');
+    }
+} elseif(count($_POST) === 0 && isset($_GET['update'])){
     $zonas = Zona::getOne(['id' => $_GET['update']]);
     $dados = $zonas->getValues();
     $jardim = Jardim::getOne(['id' => $dados['id_jardim']], 'nome_jardim');

@@ -69,50 +69,55 @@
                     <div class="invalid-feedback"></div>
                 </div>
             </div>
-            <h2 class="title secundario"><i class="ph-bold ph-flag"></i>Zonas</h2>
-            <div class="items">
-                <div class="item-header">
-                    <div class="item-cell header id">
-                        Código
+            <?php if(count($zonas) > 0) : ?>
+                <h2 class="title secundario"><i class="ph-bold ph-flag"></i>Zonas</h2>
+                <div class="items">
+                    <div class="item-header">
+                        <div class="item-cell header id">
+                            Código
+                        </div>
+                        <div class="item-cell header">
+                            Nome
+                        </div>
+                        <div class="item-cell header">
+                            Descrição
+                        </div>
+                        <div class="item-cell header">
+                            Tipo de Irrigação
+                        </div>
+                        <div class="item-cell header">
+                            Tipo de Plantação
+                        </div>
                     </div>
-                    <div class="item-cell header">
-                        Nome
-                    </div>
-                    <div class="item-cell header">
-                        Descrição
-                    </div>
-                    <div class="item-cell header">
-                        Tipo de Irrigação
-                    </div>
-                    <div class="item-cell header">
-                        Tipo de Plantação
-                    </div>
+                    <?php foreach($zonas as $zona) : ?>
+                        <a href="alterar_zona.php?update=<?= $zona->id ?>" class="item-row">
+                            <div class="item-cell id"><span class="item"><?= str_pad($zona->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
+                            <div class="item-cell"><?= $zona->nome_zona ?></div>
+                            <div class="item-cell"><?= $zona->descricao_zona ?></div>
+                            <div class="item-cell">
+                                <?php foreach ($tipoIrrigacoes as $tipoIrrigacoe) : ?>
+                                    <?= $zona->id_tipo_irrigacao == $tipoIrrigacoe->id ? "<span>{$tipoIrrigacoe->nome_tipo_irrigacao}</span>" : "" ?>
+                                <?php endforeach ?>
+                            </div>
+                            <div class="item-cell">
+                                <?php foreach ($tipoPlantas as $tipoPlanta) : ?>
+                                    <?= $zona->id_tipo_planta == $tipoPlanta->id ? "<span>{$tipoPlanta->nome_tipo_planta}</span>" : "" ?>
+                                <?php endforeach ?>
+                            </div>
+                        </a>
+                    <?php endforeach ?>
                 </div>
-                <?php foreach($zonas as $zona) : ?>
-                    <a href="alterar_zona.php?update=<?= $zona->id ?>" class="item-row">
-                        <div class="item-cell id"><span class="item"><?= str_pad($zona->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
-                        <div class="item-cell"><?= $zona->nome_zona ?></div>
-                        <div class="item-cell"><?= $zona->descricao_zona ?></div>
-                        <div class="item-cell">
-                            <?php foreach ($tipoIrrigacoes as $tipoIrrigacoe) : ?>
-                                <?= $zona->id_tipo_irrigacao == $tipoIrrigacoe->id ? "<span>{$tipoIrrigacoe->nome_tipo_irrigacao}</span>" : "" ?>
-                            <?php endforeach ?>
-                        </div>
-                        <div class="item-cell">
-                            <?php foreach ($tipoPlantas as $tipoPlanta) : ?>
-                                <?= $zona->id_tipo_planta == $tipoPlanta->id ? "<span>{$tipoPlanta->nome_tipo_planta}</span>" : "" ?>
-                            <?php endforeach ?>
-                        </div>
+            <?php endif ?>
+            <div class="container-buttons">
+                <div class="btn-box">
+                    <button type="submit" form="register" class="btn-register">
+                        <i class="ph-bold ph-check-fat"></i>Atualizar
+                    </button>
+                    <a href="registros_jardim.php" class="btn-register cancel">
+                        <i class="ph-bold ph-x"></i>Cancelar
                     </a>
-                <?php endforeach ?>
-            </div>
-            <div class="btn-box">
-                <button type="submit" form="register" class="btn-register">
-                    <i class="ph-bold ph-check-fat"></i>Atualizar
-                </button>
-                <a href="registros_jardim.php" class="btn-register cancel">
-                    <i class="ph-bold ph-x"></i>Cancelar
-                </a>
+                </div>
+                <a href="?delete=<?= $id ?>" class="btn-register trash"><i class="ph-bold ph-trash"></i></a>
             </div>
         </form>
     </div>
