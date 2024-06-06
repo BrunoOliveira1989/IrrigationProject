@@ -15,8 +15,7 @@ Parametro parametro;      // Instância da estrutura de parâmetros
 Dispositivo dispositivo;  // Instância da estrutura de dispositivos
 Comando comando;          // Instância da estrutura de comandos
 Status status;            // Instância da estrutura de status
-DHT dht(DHTPin, DHTTYPE);  // Cria um objeto para o sensor DHT
-
+DHT dht(DHTPin, DHTTYPE); // Cria um objeto para o sensor DHT
 
 unsigned long lastSensorsSending = 0;   // Armazena o último momento em que as leituras dos sensores foram enviadas
 unsigned long lastStatusSending = 0;    // Armazena o último momento em que o status do sistema foi enviado
@@ -24,11 +23,18 @@ unsigned long lastSensorTimer = 1000;   // Intervalo de tempo entre os envios de
 unsigned long tempo_atual = 0;          // Armazena o tempo atual em milissegundos
 unsigned long ultimo_tempo_flip = 0;    // Armazena o último tempo em que houve inversão de estado
 bool estado_flip = false;               // Armazena o estado atual da inversão (ligado/desligado)
-const unsigned long tempo_ligado = 10000;  // Tempo em milissegundos que o dispositivo fica ligado
+
+const unsigned long tempo_ligado = 10000;     // Tempo em milissegundos que o dispositivo fica ligado
 const unsigned long tempo_desligado = 10000;  // Tempo em milissegundos que o dispositivo fica desligado
-unsigned int ultimo_dia = 0;            // Armazena o último dia registrado
-unsigned long tempo_ligado_acumulado = 0;  // Armazena o tempo total em milissegundos que o dispositivo esteve ligado
-float vazao_bomba = 800.0;              // Define a vazão da bomba de água em litros por hora
+unsigned int ultimo_dia = 0;                  // Armazena o último dia registrado
+unsigned long tempo_ligado_acumulado = 0;     // Armazena o tempo total em milissegundos que o dispositivo esteve ligado
+float vazao_bomba = 800.0;                    // Define a vazão da bomba de água em litros por hora
+
+// Variáveis do filtro de Kalman para umidade do solo
+float x_est = 0.0;   // Estimativa inicial
+float P = 1.0;       // Covariância inicial do erro de estimativa
+const float Q = 0.01; // Variância do processo (ajustável)
+const float R = 0.5;  // Variância da medição (ajustável)
 
 void setup() {
   Serial.begin(115200);                     // Inicia a comunicação serial com a velocidade de 115200 bps
@@ -37,9 +43,11 @@ void setup() {
   setupMqtt();                              // Configura o cliente MQTT para comunicação
   controlar_valvula(false);                 // Desliga a válvula ao iniciar o sistema
   controlar_motor(false);                   // Desliga o motor ao iniciar o sistema
+  ConfigInicial();
 
   pinMode(DHTPin, INPUT);                   // Define o pino do sensor DHT como entrada
   dht.begin();                              // Inicializa o sensor DHT
+  pinMode(SensorUmidadePin, INPUT);         // Define o pino do sensor de umidade                      
   pinMode(MotorPin, OUTPUT);                // Define o pino do motor como saída
   pinMode(ValvulaPin, OUTPUT);              // Define o pino da válvula como saída
 }
@@ -50,15 +58,26 @@ void loop() {
   }
   client.loop();  // Mantém a conexão MQTT ativa
 
+  // Obtém o tempo atual em milissegundos desde que o programa começou a ser executado
   tempo_atual = millis();
 
   // Realiza leituras dos sensores
   dispositivo.temperatura = dht.readTemperature();
   dispositivo.umidade_ar = dht.readHumidity();
-  dispositivo.umidade_solo = map(analogRead(SensorUmidadePin), 4095, 1300, 0, 100);
-  dispositivo.consumo_agua = vazao_bomba/3600000.0 * (tempo_ligado_acumulado);
-  dispositivo.vazao = vazao_bomba;
 
+  // Leitura da umidade do solo e aplicação do filtro de Kalman
+  float z = analogRead(SensorUmidadePin);  // Medição do sensor
+  // Filtro de Kalman
+  float x_pred = x_est;   // Previsão (Predição)
+  float P_pred = P + Q;   // Atualiza a covariância da previsão
+  float K = P_pred / (P_pred + R);  // Calcula o ganho de Kalman
+  x_est = x_pred + K * (z - x_pred); // Atualiza a estimativa com a medição
+  P = (1 - K) * P_pred;              // Atualiza a covariância da estimativa
+  dispositivo.umidade_solo = map(x_est, 0, 1300, 0, 100);
+  //dispositivo.umidade_solo = map(analogRead(SensorUmidadePin), 4095, 1300, 0, 100);
+
+  dispositivo.consumo_agua = vazao_bomba/3600000.0 * (tempo_ligado_acumulado);
+  
   // Envia leituras dos sensores para a nuvem periodicamente
   if (millis() - lastSensorsSending > lastSensorTimer) {
     sensors();
@@ -108,25 +127,18 @@ bool semana_ideal() {
   switch (dia_da_semana) {
     case 1:
       return parametro.domingo; 
-      break;
     case 2:
       return parametro.segunda;
-      break;
     case 3:
       return parametro.terca;
-      break;
     case 4:
       return parametro.quarta;
-      break;
     case 5:
       return parametro.quinta;
-      break;
     case 6:
       return parametro.sexta;
-      break;
     case 7:
       return parametro.sabado;
-      break;
   }
 }
 
@@ -159,10 +171,8 @@ bool consumo_ideal() {
   return dispositivo.consumo_agua <= parametro.limite_maximo_consumo;
 }
 
-
 // Função para alternar o estado com tempos específicos de ligado e desligado
-bool flip(unsigned long tempo_ligado, unsigned long tempo_desligado) {
-  
+bool flip(unsigned long tempo_ligado, unsigned long tempo_desligado) {  
   if (estado_flip && (tempo_atual - ultimo_tempo_flip >= tempo_ligado)) {
     estado_flip = false;
     ultimo_tempo_flip = tempo_atual;
@@ -201,8 +211,8 @@ bool controlar_irrigacao() {
   } else {
     consumo = 1;
   }
-
   
+  // Lógica de controle de irrigação com base nas condições de controle
   if (comando.controle_umidade) {
     irrigacao_ativa = hora && duracao && semana && umidade && temperatura && consumo;
   } else if (comando.controle_temperatura || comando.controle_consumo) {
@@ -223,7 +233,6 @@ bool controlar_irrigacao() {
     tempo_ligado_acumulado = 0;
     ultimo_dia = day();
   }
-
   return irrigacao_ativa;
 }
 
@@ -241,4 +250,6 @@ void controlar_motor(bool ligado) {
   digitalWrite(MotorPin, ligado ? LOW : HIGH);
   // Atualiza o estado do motor na estrutura 'dispositivo'
   dispositivo.motor = ligado ? (10 + comando.automatico) : 0;
+  // Simula a vazão da bomba
+  dispositivo.vazao = ligado ? vazao_bomba : 0.00;
 }

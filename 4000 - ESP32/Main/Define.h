@@ -1,4 +1,3 @@
-
 // ID do jardim e da área
 #define id_jardim String(6)
 #define id_area String(21)
