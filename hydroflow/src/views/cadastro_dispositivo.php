@@ -10,7 +10,7 @@
     ?>
     <div class="content">
         <form action="#" method="post"class="register" id="register">
-            <input type="hidden" name="id" value="<?= $id ?>">
+            <input type="hidden" name="id" value="<?= $id_dispositivo ?>">
             <div class="form-group">
                 <div class="input-field flex-10">
                     <label for="jardim">Jardim</label>
@@ -61,13 +61,16 @@
                     <textarea class="input textarea" name="descricao" id="descricao" cols="30" rows="10"  placeholder="Adicione uma descrição para o dispositivo"><?= $descricao ?></textarea>
                 </div>
             </div>
-            <div class="btn-box">
-                <button type="submit" form="register" class="btn-register">
-                    <i class="ph-bold ph-check-fat"></i><?= $id ? 'Alterar' : 'Cadastrar' ?>
-                </button>
-                <a href="registros_dispositivo.php" class="btn-register cancel">
-                    <i class="ph-bold ph-x"></i>Cancelar
-                </a>
+            <div class="container-buttons">
+                <div class="btn-box">
+                    <button type="submit" form="register" class="btn-register">
+                        <i class="ph-bold ph-check-fat"></i><?= $id ? 'Alterar' : 'Cadastrar' ?>
+                    </button>
+                    <a href="registros_dispositivo.php" class="btn-register cancel">
+                        <i class="ph-bold ph-x"></i>Cancelar
+                    </a>
+                </div>
+                <a href="?delete=<?= $id_dispositivo ?>" class="btn-register trash"><i class="ph-bold ph-trash"></i></a>
             </div>
         </form>
     </div>

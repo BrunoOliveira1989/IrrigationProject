@@ -1,8 +1,8 @@
 <?php
 
-loadModel("Paramestro");
+loadModel("Parametro");
 
-$parametros = Parametros::getCheckboxesValues(['id_jardim' => $_GET['jardim'], 'id_area' => $_GET['area']]);
+$parametros = Parametro::getCheckboxesValues(['id_jardim' => $_GET['jardim'], 'id_area' => $_GET['area']]);
 
 // header('Content-Type: application/json');
 

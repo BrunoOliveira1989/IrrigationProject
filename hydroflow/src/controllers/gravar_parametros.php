@@ -10,12 +10,16 @@ loadModel("Parametro");
 if(count($dados) > 0) {
     try {
         $novoParametro = new Parametro($dados);
-        $novoParametro->inserir();
-        addMsgSucesso("Parametrôs gravados com sucesso");
-        $response = ['seccess' => true];
+        if($novoParametro->id_parametros){
+            $novoParametro->alterar();
+            $response = ["success" => true];
+        } else {
+            $novoParametro->inserir();
+            $response = ["success" => true];
+        }
     } catch(Exception $e) {
         $exception = $e;
-        $response = ['seccess' => false];
+        $response = ["success" => false, "erros" => $exception];
     }
     
     header('Content-Type: application/json');

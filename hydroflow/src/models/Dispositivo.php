@@ -45,6 +45,11 @@ class Dispositivo extends Model {
         if(!$this->descricao) $this->descricao = null;
         return parent::update();
     }
+        
+    public static function deleteByIdDipositivo($id) {
+        $sql = "DELETE FROM " . static::$tableName . " WHERE id_dispositivo = {$id}";
+        Database::executeSQL($sql);
+    }
 
     private function validar() {
         $errors = [];

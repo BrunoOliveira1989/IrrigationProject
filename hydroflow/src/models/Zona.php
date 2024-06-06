@@ -17,6 +17,17 @@ class Zona extends Model {
         return parent::insert();
     }
 
+    public function alterar() {
+        $this->validar();
+        if(!$this->descricao_zona) $this->descricao_zona = null;
+        return parent::update();
+    }
+    
+    public static function deleteByIdJardim($id) {
+        $sql = "DELETE FROM " . static::$tableName . " WHERE id_jardim = {$id}";
+        Database::executeSQL($sql);
+    }
+
     private function validar() {
         $errors = [];
 

@@ -12,15 +12,19 @@ class Jardim extends Model {
         'cidade',
         'estado',
         'tamanho',
-        'descricao_jardim',
-        'id_funcionario'
+        'descricao_jardim'
     ];
 
     public function inserir() {
         $this->validar();
         if(!$this->descricao_jardim) $this->descricao_jardim = null;
-        if(!$this->id_funcionario) $this->id_funcionario = null;
         return parent::insert();
+    }
+
+    public function alterar() {
+        $this->validar();
+        if(!$this->descricao_jardim) $this->descricao_jardim = null;
+        return parent::update();
     }
 
     private function validar() {

@@ -157,6 +157,27 @@
     color: var(--preto);
 }
 
+.form-group .input-field .input:disabled,
+.form-group .input-field .input[readonly]{
+    background-color: transparent;
+    color: var(--branco);
+    opacity: 0.7;
+    font-size: 20px;
+    padding: 0;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.form-group .input-field .input[readonly] {
+    cursor: default;
+    user-select: none;
+}
+
+.form-group .input-field.disabled {
+    flex-direction: row;
+    align-items: center;
+}
+
 .main .btn-add {
     width: 100%;
     font-size: 16px;
@@ -216,6 +237,21 @@
     background-color: var(--azul-claro);
 }
 
+.content .btn-register.trash {
+    background-color: var(--vermelho);
+    width: fit-content;
+    padding-inline: 10px;
+    margin-block: auto;
+}
+
+.content .container-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
 .invalid-feedback {
     font-family: "Poppins", sans-serif;
     margin-top: 3px;
@@ -242,4 +278,59 @@
     flex: 1;
     padding-top: 30px;
     padding-right: 15px;
+}
+
+.items {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin-bottom: 10px;
+    padding-right: 5px;
+}
+
+.item-row {
+    width: 100%;
+    background-color: var(--branco);
+    display: flex;
+    padding: 5px 0;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    color: var(--azul-escuro);
+}
+
+.item-row:hover {
+    transform: scale(1.01);
+}
+
+.item-row .item {
+    background-color: var(--verde-claro);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.item-cell {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--preto);
+}
+
+.item-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    background-color: var(--verde-claro);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.item-cell.id {
+    flex: 0.5;
 }

@@ -9,7 +9,30 @@
         include(TEMPLATE_PATH . "/messages.php")
     ?>
     <div class="content">
+        <dialog class="modal" id="confirm-modal">
+            <div class="modal-container">
+                <button class="btn-close" id="close"><i class="ph-bold ph-x-circle"></i></button>
+                <h2>Deseja carregar os parâmetros no dispositivo?</h2>
+                <div class="btn-box">
+                    <button class="btn-register" id="modal-carregar">Carregar</button>
+                    <button class="btn-register gravar" id="modal-salvar">Apenas salvar</button>
+                </div>
+            </div>
+        </dialog>
+        <dialog class="modal" id="success-modal">
+            <div class="modal-container">
+                <h2></h2>
+                <div class="loader-bar"></div>
+            </div>
+        </dialog>
+        <dialog class="modal" id="error-modal">
+            <div class="modal-container">
+                <h2></h2>
+                <div class="loader-bar"></div>
+            </div>
+        </dialog>
         <form action="#" method="post" class="register" id="register">
+            <input type="hidden" name="id_parametros" id="id_parametros">
             <div class="form-group">
                 <div class="input-field flex-10">
                     <label for="id_jardim">Jardim</label>
@@ -114,3 +137,4 @@
         </form>
     </div>
 </main>
+<script src="/assets/js/parametros.js" defer></script>

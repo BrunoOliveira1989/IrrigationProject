@@ -159,6 +159,11 @@ class Model {
         $sql .= "WHERE id = {$this->id}";
         Database::executeSQL($sql);
     }
+    
+    public static function deleteById($id) {
+        $sql = "DELETE FROM " . static::$tableName . " WHERE id = {$id}";
+        Database::executeSQL($sql);
+    }
 
     private static function getFilters($filters) {
         $sql = '';

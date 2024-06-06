@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/css/menssagem.css" />
   <link rel="stylesheet" href="/assets/css/comum.css" />
   <link rel="stylesheet" href="/assets/css/fonts/style.css">
+  <link rel="stylesheet" href="/assets/css/modal.css">
   <title>HydroFlow</title>
 </head>
 

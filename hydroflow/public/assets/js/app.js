@@ -5,4 +5,6 @@
   fecharMsg.addEventListener("click", () => {
     msg.classList.add("hidden");
   });
+
+  setTimeout(() => msg.classList.add("hidden"), 3000);
 })();
