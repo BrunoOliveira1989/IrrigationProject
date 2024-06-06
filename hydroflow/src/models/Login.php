@@ -6,15 +6,15 @@ class Login extends Model {
         $errors = [];
 
         if(!$this->usuario) {
-            $erros['usuario'] = "Por favor, informe o usuário.";
+            $errors['usuario'] = "Por favor, informe o usuário.";
         }
 
         if(!$this->senha) {
-            $erros['senha'] = "Por favor, informe a senha.";
+            $errors['senha'] = "Por favor, informe a senha.";
         }
 
         if(count($errors) > 0) {
-            throw new ValidationException($erros);
+            throw new ValidationException($errors);
         }
     }
     public function checkLogin() {
