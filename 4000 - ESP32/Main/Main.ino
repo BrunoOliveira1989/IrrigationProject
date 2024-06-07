@@ -76,6 +76,7 @@ void loop() {
   dispositivo.umidade_solo = map(x_est, 0, 1300, 0, 100);
   //dispositivo.umidade_solo = map(analogRead(SensorUmidadePin), 4095, 1300, 0, 100);
 
+  //Cálculo para consumo de água
   dispositivo.consumo_agua = vazao_bomba/3600000.0 * (tempo_ligado_acumulado);
   
   // Envia leituras dos sensores para a nuvem periodicamente
