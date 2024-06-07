@@ -93,7 +93,7 @@
                         <a href="alterar_zona.php?update=<?= $zona->id ?>" class="item-row">
                             <div class="item-cell id"><span class="item"><?= str_pad($zona->id, 4, '0' , STR_PAD_LEFT) ?></span></div>
                             <div class="item-cell"><?= $zona->nome_zona ?></div>
-                            <div class="item-cell"><?= $zona->descricao_zona ?></div>
+                            <p class="item-cell descricao"><?= $zona->descricao_zona ?></p>
                             <div class="item-cell">
                                 <?php foreach ($tipoIrrigacoes as $tipoIrrigacoe) : ?>
                                     <?= $zona->id_tipo_irrigacao == $tipoIrrigacoe->id ? "<span>{$tipoIrrigacoe->nome_tipo_irrigacao}</span>" : "" ?>

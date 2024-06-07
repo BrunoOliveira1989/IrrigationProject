@@ -334,3 +334,11 @@
 .item-cell.id {
     flex: 0.5;
 }
+
+.item-cell.descricao {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    padding-top: 15px;
+}
