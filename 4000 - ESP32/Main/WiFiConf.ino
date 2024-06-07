@@ -1,8 +1,8 @@
-/*const char* ssid = "House X New Router";
-const char* password = "Alice@2017&Linda";*/
+const char* ssid = "House X New Router";
+const char* password = "Alice@2017&Linda";
 
-const char* ssid = "HydroFlow";
-const char* password = "HydroFlow@123";
+//const char* ssid = "HydroFlow";
+//const char* password = "HydroFlow@123";
 
 /*const char* ssid = "Fatec24GHz";
 const char* password = "fatecitapira";*/

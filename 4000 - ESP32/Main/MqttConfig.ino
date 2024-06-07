@@ -1,5 +1,5 @@
 // Configurações da rede MQTT
-const char* mqtt_server = "192.168.254.102";  // Endereço do servidor MQTT
+const char* mqtt_server = "192.168.0.110";  // Endereço do servidor MQTT
 const int mqtt_port = 1883;                 // Porta do servidor MQTT
 
 void setupMqtt() {
