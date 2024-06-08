@@ -1,2 +1,2 @@
-# Ignorar o arquivo WiFiConf.ino
-4000 - ESP32/Main/WiFiConf.ino
+# Ignorar o arquivo Security.h
+4000 - ESP32/Main/Security.h
