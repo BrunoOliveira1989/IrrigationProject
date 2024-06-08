@@ -7,6 +7,7 @@
 #include <ArduinoJson.h>        // Inclui a biblioteca para manipulação de JSON
 #include "Structs.h"            // Incluir o arquivo de cabeçalho das structs
 #include "Define.h"             // Incluir o arquivo de cabeçalho das defines
+#include "Security.h"           // Incluir o arquivo com senha
 
 WiFiClient espClient;               // Cria um cliente WiFi
 PubSubClient client(espClient);     // Cria um cliente MQTT
